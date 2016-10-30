@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block navigation %}
+{% include 'navigation.html' %}
+{% endblock navigation %}
+
+{% block content %}
+
+<!-- eventS -->
+<section class="section section--events section--past-events" id="past-events">
+	<h2 class="section__header">PAST EVENTS  <a href="#past-events"><i class="fa fa-chain fa-chain-big"></i></a></h2>
+	{% include 'events.html' %}
+</section>
+
+{% endblock content %}

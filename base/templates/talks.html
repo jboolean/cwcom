@@ -1,0 +1,74 @@
+{% if talks %}
+<section class="section section--talks" id="talks">
+	<h2 class="section__header">TALKS <a href="#talks"><i class="fa fa-chain fa-chain-big"></i></a></h2>
+	<div class="section__content">
+		<div class="section__row">
+		{% for talk in talks %}
+			<div class="item item--text" id="{{ talk.slug }}">
+				<img class="item__image" src="{{ talk.image.url }}" alt="{{ talk.name }}" />
+				<h3 class="item__name">Talk: {{ talk.name }} <a href="#{{ talk.slug }}"><i class="fa fa-chain"></i></a></h3>
+
+				{% if talk.info %}
+				<div class="item__meta">
+					<span class="item__key">Info: </span>
+					<span class="item__value">{{ talk.info }}</span>
+				</div>
+				{% endif %}
+
+				{% if talk.project %}
+				<div class="item__meta">
+					<span class="item__key">Project: </span>
+					<span class="item__value">
+						<a href="#{{ talk.project.slug }}">{{ talk.project.name }}</a>
+					</span>
+				</div>
+				{% endif %}
+
+				{% if talk.system %}
+				<div class="item__meta">
+					<span class="item__key">System: </span>
+					<span class="item__value">
+						<a href="#{{ talk.system.slug }}">{{ talk.system.name }}</a>
+					</span>
+				</div>
+				{% endif %}
+
+				{% if talk.texts.all %}
+				<div class="item__meta">
+					<span class="item__key">Texts: </span>
+					<span class="item__value">
+					{% for text in talk.texts.all %}
+						<a class="item__text" href="#{{text.slug}}">{{text.name}}</a>{% if forloop.last %}{% else %}, {% endif %}
+					{% endfor %}
+					</span>
+				</div>
+				{% endif %}
+
+				{% if talk.talks.all %}
+				<div class="item__meta">
+					<span class="item__key">Talks: </span>
+					<span class="item__value">
+					{% for talk in talk.talks.all %}
+						<a class="item__talk" href="#{{talk.slug}}">{{talk.name}}</a>{% if forloop.last %}{% else %}, {% endif %}
+					{% endfor %}
+					</span>
+				</div>
+				{% endif %}
+
+				{% if talk.press %}
+				<div class="item__meta">
+					<span class="item__key">Press: </span>
+					<span class="item__value">
+						{{talk.press|safe}}
+					</span>
+				</div>
+				{% endif %}
+			</div>
+		{% if forloop.counter|divisibleby:"3" %}
+		</div>
+		<div class="section__row">
+		{% endif %}
+		{% endfor %}
+	</div>
+</section>
+{% endif %}

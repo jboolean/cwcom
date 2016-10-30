@@ -1,0 +1,11 @@
+{% load static %}
+
+<header id="header">
+	<!-- INTRO -->
+	<section class="section section--{{ content_blocks.first.slug }}" id="{{ content_blocks.first.slug }}">
+		<div class="section__content">
+			{{ content_blocks.first.content|safe }}
+		</div>
+		<img class="header" alt="Caroline Woolard" src="{% static 'base/images/intro.jpg' %}" />
+	</section>
+</header>

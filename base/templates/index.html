@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block navigation %}
+{% include 'navigation.html' %}
+{% endblock navigation %}
+
+{% block content %}
+
+{% include 'intro.html' %}
+
+<!-- PROJECTS -->
+{% include 'projects.html' %}
+
+<!-- SYSTEMS -->
+{% include 'systems.html' %}
+
+<!-- TALKS -->
+{% include 'talks.html' %}
+
+<!-- EVENTS -->
+{% if events %}
+<section class="section section--events" id="events">
+	<h2 class="section__header">EVENTS  <a href="#events"><i class="fa fa-chain fa-chain-big"></i></a></h2>
+	{% include 'events.html' %}
+</section>
+{% endif %}
+
+<!-- TEXTS -->
+{% include 'texts.html' %}
+
+{% include 'content-blocks.html' %}
+
+{% endblock content %}

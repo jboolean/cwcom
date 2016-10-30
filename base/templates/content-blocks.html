@@ -1,0 +1,9 @@
+{% for content_block in content_blocks %}
+	{% if not forloop.first %}
+	<!-- {{ content_block.name|upper }} -->
+	<section class="section section--{{ content_block.slug }}" id="{{ content_block.slug }}">
+		<h2 class="section__header">{{ content_block.name|upper }}  <a href="#{{ content_block.slug }}"><i class="fa fa-chain fa-chain-big"></i></a></h2>
+		<div class="section__content">{{ content_block.content|safe }}</div>
+	</section>
+	{% endif %}
+{% endfor %}

@@ -1,0 +1,65 @@
+{% load static %}
+
+{% if projects %}
+<section class="section section--projects" id="projects">
+	<h2 class="section__header">PROJECTS <a href="#projects"><i class="fa fa-chain fa-chain-big"></i></a></h2>
+	<div class="section__content">
+		<div class="section__row">
+		{% for project in projects %}
+			<div class="item" id="{{ project.slug }}">
+				<a href="{% url 'base:project-detail' slug=project.slug %}">
+					<img class="item__image" src="{{ MEDIA_URL }}{{ project.primary_image.image }}" alt="{{ project.name }}" />
+				</a>
+				<h3 class="item__name">Project: {{ project.name }} <a href="#{{ project.slug }}"><i class="fa fa-chain"></i></a></h3>
+
+				{% if project.info %}
+				<div class="item__meta">
+					<span class="item__key">Info: </span>
+					<span class="item__value">{{ project.info }}</span>
+				</div>
+				{% endif %}
+
+				{% if project.system %}
+				<div class="item__meta">
+					<span class="item__key">System: </span>
+					<span class="item__value"><a href="#{{ project.system.slug }}">{{ project.system.name }}</a></span>
+				</div>
+				{% endif %}
+
+				{% if project.texts.all %}
+				<div class="item__meta">
+					<span class="item__key">Texts: </span>
+					<span class="item__value">
+					{% for text in project.texts.all %}
+						<a class="item__text" href="#{{text.slug}}">{{text.name}}</a>{% if forloop.last %}{% else %}, {% endif %}
+					{% endfor %}
+					</span>
+				</div>
+				{% endif %}
+
+				{% if project.talks.all %}
+				<div class="item__meta">
+					<span class="item__key">Talks: </span>
+					<span class="item__value">
+					{% for talk in project.talks.all %}
+						<a class="item__talk" href="#{{talk.slug}}">{{talk.name}}</a>{% if forloop.last %}{% else %}, {% endif %}
+					{% endfor %}
+					</span>
+				</div>
+				{% endif %}
+
+				{% if project.press %}
+				<div class="item__meta">
+					<span class="item__key">Press: </span>
+					<span class="item__value">{{project.press|safe}}</span>
+				</div>
+				{% endif %}
+			</div>
+		{% if forloop.counter|divisibleby:"3" %}
+		</div>
+		<div class="section__row">
+		{% endif %}
+		{% endfor %}
+	</div>
+</section>
+{% endif %}

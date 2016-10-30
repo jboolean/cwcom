@@ -1,0 +1,389 @@
+@import 'susy'
+
+$susy: ( columns: 12, gutters: 1, container: 120rem, math: fluid, output: float, gutter-position: inside, global-box-sizing: border-box )
+
+
+// Colours
+// $color-primary: rgb(171, 44, 44)
+$color-primary: #7820c8
+$color-secondary: #00fff3
+$color-tertiary: #fcee21
+$color-grey: #a1acb5
+$color-grey-light: #dce8ef
+$color-grey-dark: #333
+$color-type: rgba(23,12,1,1)
+$color-background: rgba(255,249,248,0.4)
+
+// Breakpoints
+$mobile-landscape: 480px
+$tablet: 768px
+$tablet-wide: 768px
+$desktop: 960px
+$widescreen: 1140px
+
+*
+  box-sizing: border-box
+
+%clearfix
+  &:after
+    content: ""
+    display: table
+    clear: both
+
+p
+  margin: 0 0 2rem 0
+
+a
+  text-decoration: underline
+  color: $color-type
+  z-index: 20
+  position: relative
+
+  &:visited
+    color: $color-type
+
+ul
+  list-style: none
+  margin: 0
+  padding: 0
+
+li
+  margin: 0
+  padding: 0
+
+html
+  font-size: 62.5% // 10px
+
+body
+  font-size: 1.6rem
+  line-height: 1.5
+  margin: 0
+  padding: 0
+  color: $color-type
+  background-color: $color-background
+  letter-spacing: 0.05rem
+  font-family: 'Arial'
+
+  @media (min-width: $tablet)
+    font-size: 3rem
+    line-height: 1.45
+
+  @media (min-width: $desktop)
+    font-size: 2.4rem
+    line-height: 1.45
+
+  @media (min-width: $widescreen)
+    font-size: 2.1rem
+    line-height: 1.35
+
+.navigation
+  position: fixed
+  z-index: 50
+  top: 0
+  right: 0
+  padding: 0
+  width: 100%
+
+  &.show
+    height: auto
+    opacity: 1
+
+    &:before,
+    &:after
+      display: table
+      content: " "
+      clear: both
+
+  &.show
+    .navigation__menu
+      height: auto
+      opacity: 1
+
+    .navigation__navicon
+      color: rgba(23,12,1,0.2)
+
+.navigation__menu
+  z-index: 2
+  background: rgba(255,249,248,0.9)
+  text-align: center
+  padding: 0.5rem
+  opacity: 0
+  transition: opacity .25s ease-in-out
+  -moz-transition: opacity .25s ease-in-out
+  -webkit-transition: opacity .25s ease-in-out
+
+  @media (min-width: $desktop)
+    text-align: center
+    opacity: 1
+    padding: 0
+    border-bottom: 1px solid $color-background
+
+.menu__item
+  width: 100%
+  margin: 0 0 0.5rem 0
+
+  @media (min-width: $desktop)
+    display: inline-block
+    width: auto
+    margin: 0
+    font-size: 1.3rem
+
+  @media (min-width: $widescreen)
+    font-size: 1.7rem
+
+  a
+    text-decoration: none
+    text-transform: uppercase
+    font-weight: bold
+
+    @media (min-width: $desktop)
+      display: block
+      padding: 0.5rem 1.8rem
+      color: $color-type
+      font-family: helvetica
+      text-transform: uppercase
+
+#header
+  padding-top: 10rem
+
+.navigation__navicon
+  display: block
+  position: absolute
+  right: 0
+  z-index: 10
+  color: $color-type
+  font-size: 3.5rem
+  padding: 0.3rem 0.9rem
+
+  @media (min-width: $tablet)
+    font-size: 5rem
+    padding: 0.3rem 1.5rem
+
+  @media (min-width: $desktop)
+    display: none
+
+  &:hover
+    @media (min-width: $desktop)
+      cursor: pointer
+
+.content
+  z-index: 1
+  width: 100%
+  padding: 0
+  -webkit-overflow-scrolling: touch
+  overflow: auto
+
+.header
+  width: 100%
+
+  @media (min-width: $tablet)
+    width: 100%
+
+  @media (min-width: $widescreen)
+    width: 100%
+
+.section
+  margin: 0 0 5rem 0
+
+.section__header
+  margin: 0 0 5rem 0
+  text-align: center
+  background-color: $color-background
+  color: $color-type
+  font-size: 3rem
+  letter-spacing: 0.1rem
+
+  @media (min-width: $tablet)
+    font-size: 5rem
+
+  @media (min-width: $widescreen)
+    font-size: 4rem
+
+.section__content
+  @include container
+  padding: 0 2rem
+  overflow: auto
+
+  @media (min-width: $tablet)
+    padding: 0 4rem
+
+.section--projects .section__content,
+.section--systems .section__content
+  @media (min-width: $desktop)
+    padding: 0
+
+.section--wound
+  .section-content
+    padding-top: 10rem
+    padding-bottom: 5rem
+
+.section--intro,
+.section--visit
+  .section__content
+    @media (min-width: $desktop)
+      max-width: 80rem
+
+.section--past-events
+  margin-top: 5rem
+
+.fa-chain
+  display: inline-block
+  font-family: FontAwesome
+  font-size: 2rem
+  text-rendering: auto
+  -webkit-font-smoothing: antialiased
+  -moz-osx-font-smoothing: grayscale
+
+  &:before
+    content: "\f0c1"
+
+  &.fa-chain-big
+    font-size: 3rem
+
+.section__row
+  position: relative
+  overflow: hidden
+
+.item
+  margin: 0 0 3rem 0
+  padding: 0 0 3rem 0
+  border-bottom: 1px solid $color-type
+
+  @media (min-width: $desktop)
+    @include span(4 of 12 split)
+    border-bottom: none
+    padding: 0
+    font-size: 1.8rem
+
+  @media (min-width: $widescreen)
+    @include span(4 of 12 split)
+    font-size: 1.6rem
+
+  &:last-child
+    border-bottom: none
+
+.item__image
+  width: 100%
+  height: 25rem
+  object-fit: cover
+
+.item__name
+  margin: 0
+
+.item__meta
+  margin: 0 0 0.5rem
+
+.item__key
+  font-weight: bold
+
+.item__value
+  display: inline
+
+.event
+  margin: 0 0 3rem 0
+  padding: 0 0 3rem 0
+  border-bottom: 1px solid $color-type
+
+  &:last-child
+    border-bottom: none
+
+    @media (min-width: $widescreen)
+      padding: 0
+
+.event__time
+  margin: 0
+
+.event__name
+  margin: 0
+
+.event__text
+  margin: 0
+
+.event__description
+  margin: 1rem 0
+
+.section__row--texts
+  position: relative
+  overflow: hidden
+  border-bottom: 1px solid $color-type
+  margin-bottom: 1rem
+
+  &:last-child
+    border-bottom: none
+
+  @media (min-width: $tablet)
+    margin-bottom: 3rem
+
+  @media (min-width: $widescreen)
+    border-bottom: none
+
+.item--text
+  margin: 0 0 1rem 0
+  padding: 0 0 3rem 0
+  border-bottom: 1px solid $color-type
+  position: relative
+
+  @media (min-width: $tablet)
+    margin: 0 0 3rem 0
+    padding: 0 0 6rem 0
+
+  @media (min-width: $widescreen)
+    @include span(6 of 12 split)
+    border-bottom: none
+    padding: 0 0 2rem 0
+
+  &:last-child
+    border-bottom: none
+
+  &.show
+    @media (min-width: $widescreen)
+      padding: 0
+
+    .item__description
+      height: auto
+
+    .item__toggle
+      display: none
+
+  .item__name
+    margin: 0 0 1rem 0
+
+  .item__description
+    height: 17rem
+    overflow: hidden
+
+    @media (min-width: $tablet)
+      height: 26.7rem
+
+    @media (min-width: $desktop)
+      height: 19.5rem
+
+  .item__toggle
+    position: absolute
+    right: 2rem
+    bottom: 0rem
+    z-index: 10
+    text-transform: uppercase
+
+    @media (min-width: $tablet)
+      bottom: 2rem
+
+    @media (min-width: $desktop)
+      bottom: 0rem
+
+    @media (min-width: $widescreen)
+      bottom: -3rem
+
+  .maps-black
+    -webkit-filter: grayscale(100%)
+    filter: grayscale(100%)
+    pointer-events: none
+    position: relative
+    left: -2rem
+
+    @media (min-width: $tablet)
+      left: 0
+
+    iframe
+      @media (min-width: $tablet)
+        width: 100%

@@ -1,0 +1,46 @@
+<nav class="navigation">
+	<div class="navigation__navicon">&#9776;</div>
+	<ul class="navigation__menu">
+		<li class="menu__item">
+			<a href="{{ site_url }}#header">Caroline Woolard</a>
+		</li>
+
+		{% if projects %}
+		<li class="menu__item">
+			<a href="{{ site_url }}#projects">Projects</a>
+		</li>
+		{% endif %}
+
+		{% if systems %}
+		<li class="menu__item">
+			<a href="{{ site_url }}#systems">Systems</a>
+		</li>
+		{% endif %}
+
+		{% if talks %}
+		<li class="menu__item">
+			<a href="{{ site_url }}#talks">Talks</a>
+		</li>
+		{% endif %}
+
+		{% if events %}
+		<li class="menu__item">
+			<a href="{% url 'base:past' %}">Past Events</a>
+		</li>
+		{% endif %}
+
+		{% if texts %}
+		<li class="menu__item">
+			<a href="{{ site_url }}#texts">Texts</a>
+		</li>
+		{% endif %}
+
+		{% for content_block in content_blocks %}
+		{% if not forloop.first %}
+		<li class="menu__item">
+			<a href="{{ site_url }}#{{ content_block.slug }}">{{ content_block.name }}</a>
+		</li>
+		{% endif %}
+		{% endfor %}
+	</ul>
+</nav>

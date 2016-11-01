@@ -7,7 +7,9 @@ from .models import (
     ProjectImage,
     Project,
     System,
+    SystemImage,
     Talk,
+    TalkImage,
     Text,
     Event
 )
@@ -17,6 +19,24 @@ class ProjectImageInline(admin.TabularInline):
     model = ProjectImage
     verbose_name = 'Project Image'
     verbose_name_plural = 'Project Images'
+    fields = ('image', 'image_tag', 'order', 'is_primary')
+    readonly_fields = ('image_tag',)
+    extra = 1
+
+
+class SystemImageInline(admin.TabularInline):
+    model = SystemImage
+    verbose_name = 'System Image'
+    verbose_name_plural = 'System Images'
+    fields = ('image', 'image_tag', 'order', 'is_primary')
+    readonly_fields = ('image_tag',)
+    extra = 1
+
+
+class TalkImageInline(admin.TabularInline):
+    model = TalkImage
+    verbose_name = 'Talk Image'
+    verbose_name_plural = 'Talk Images'
     fields = ('image', 'image_tag', 'order', 'is_primary')
     readonly_fields = ('image_tag',)
     extra = 1
@@ -47,12 +67,16 @@ class SystemAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('name',)}
     readonly_fields = ('url',)
     list_display = ('name', 'url')
+    inlines = [ SystemImageInline, ]
+    exclude = ('images',)
 
 
 class TalkAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('name',)}
     readonly_fields = ('url',)
     list_display = ('name', 'url')
+    inlines = [ TalkImageInline, ]
+    exclude = ('images',)
 
 
 class EventAdmin(admin.ModelAdmin):
@@ -66,5 +90,7 @@ admin.site.register(Text, TextAdmin)
 admin.site.register(Project, ProjectAdmin)
 admin.site.register(ProjectImage)
 admin.site.register(System, SystemAdmin)
+admin.site.register(SystemImage)
 admin.site.register(Talk, TalkAdmin)
+admin.site.register(TalkImage)
 admin.site.register(Event, EventAdmin)

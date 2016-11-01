@@ -1,1 +1,81 @@
-hi project!
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block navigation %}
+{% include 'navigation.html' %}
+{% endblock navigation %}
+
+{% block content %}
+<section class="section section--detail section--{{project.slug}}">
+	<h2 class="section__header">{{ project.name|upper }} <a href="{% url 'base:project-detail' slug=project.slug %}"><i class="fa fa-chain fa-chain-big"></i></a></h2>
+	<div class="section__content">
+		<div class="item item--detail" id="{{ project.slug }}">
+			{% if project.primary_image %}
+			<img class="item__primary-image" src="{{ MEDIA_URL }}{{ project.primary_image.image }}" alt="{{ project.name }}" />
+			{% endif %}
+
+			{% if project.info %}
+			<div class="item__meta">
+				<span class="item__key">Info: </span>
+				<span class="item__value">{{ project.info }}</span>
+			</div>
+			{% endif %}
+
+			{% if project.system %}
+			<div class="item__meta">
+				<span class="item__key">System: </span>
+				<span class="item__value"><a href="#{{ project.system.slug }}">{{ project.system.name }}</a></span>
+			</div>
+			{% endif %}
+
+			{% if project.texts.all %}
+			<div class="item__meta">
+				<span class="item__key">Texts: </span>
+				<span class="item__value">
+				{% for text in project.texts.all %}
+					<a class="item__text" href="#{{text.slug}}">{{text.name}}</a>{% if forloop.last %}{% else %}, {% endif %}
+				{% endfor %}
+				</span>
+			</div>
+			{% endif %}
+
+			{% if project.talks.all %}
+			<div class="item__meta">
+				<span class="item__key">Talks: </span>
+				<span class="item__value">
+				{% for talk in project.talks.all %}
+					<a class="item__talk" href="#{{talk.slug}}">{{talk.name}}</a>{% if forloop.last %}{% else %}, {% endif %}
+				{% endfor %}
+				</span>
+			</div>
+			{% endif %}
+
+			{% if project.press %}
+			<div class="item__meta">
+				<span class="item__key">Press: </span>
+				<span class="item__value">{{project.press|safe}}</span>
+			</div>
+			{% endif %}
+
+			{% if project.description %}
+			<div class="item__meta">
+				<span class="item__value">{{project.description|safe}}</span>
+			</div>
+			{% endif %}
+
+			{% if project.projectimage_set.all %}
+			<div class="item__gallery gallery">
+			{% for item in project.projectimage_set.all %}
+			{% if not item.is_primary %}
+				<div class="gallery__item">
+					<img class="gallery__image" src="{{ MEDIA_URL }}{{ item.image }}" alt="{{ project.name }}" />
+				</div>
+			{% endif %}
+			{% endfor %}
+			</div>
+			{% endif %}
+		</div>
+	</div>
+</section>
+{% endblock content %}

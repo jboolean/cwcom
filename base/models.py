@@ -48,7 +48,7 @@ class BaseImage(Model):
 
     @property
     def image_tag(self):
-        return format_html('<img src="/uploads/%s" width="100" height="100" />' % self.image)
+        return format_html('<img src="/static/uploads/%s" height="100" />' % self.image)
 
 
 class ContentBlock(Base):

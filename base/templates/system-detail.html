@@ -1,1 +1,81 @@
-hi system!
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block navigation %}
+{% include 'navigation.html' %}
+{% endblock navigation %}
+
+{% block content %}
+<section class="section section--detail section--{{system.slug}}">
+	<h2 class="section__header">{{ system.name|upper }} <a href="{% url 'base:system-detail' slug=system.slug %}"><i class="fa fa-chain fa-chain-big"></i></a></h2>
+	<div class="section__content">
+		<div class="item item--detail" id="{{ system.slug }}">
+			{% if system.primary_image %}
+			<img class="item__primary-image" src="{{ MEDIA_URL }}{{ system.primary_image.image }}" alt="{{ system.name }}" />
+			{% endif %}
+
+			{% if system.info %}
+			<div class="item__meta">
+				<span class="item__key">Info: </span>
+				<span class="item__value">{{ system.info }}</span>
+			</div>
+			{% endif %}
+
+			{% if system.project %}
+			<div class="item__meta">
+				<span class="item__key">Project: </span>
+				<span class="item__value"><a href="#{{ system.project.slug }}">{{ system.project.name }}</a></span>
+			</div>
+			{% endif %}
+
+			{% if system.texts.all %}
+			<div class="item__meta">
+				<span class="item__key">Texts: </span>
+				<span class="item__value">
+				{% for text in system.texts.all %}
+					<a class="item__text" href="#{{text.slug}}">{{text.name}}</a>{% if forloop.last %}{% else %}, {% endif %}
+				{% endfor %}
+				</span>
+			</div>
+			{% endif %}
+
+			{% if system.talks.all %}
+			<div class="item__meta">
+				<span class="item__key">Talks: </span>
+				<span class="item__value">
+				{% for talk in system.talks.all %}
+					<a class="item__talk" href="#{{talk.slug}}">{{talk.name}}</a>{% if forloop.last %}{% else %}, {% endif %}
+				{% endfor %}
+				</span>
+			</div>
+			{% endif %}
+
+			{% if system.press %}
+			<div class="item__meta">
+				<span class="item__key">Press: </span>
+				<span class="item__value">{{system.press|safe}}</span>
+			</div>
+			{% endif %}
+
+			{% if system.description %}
+			<div class="item__meta">
+				<span class="item__value">{{system.description|safe}}</span>
+			</div>
+			{% endif %}
+
+			{% if system.systemimage_set.all %}
+			<div class="item__gallery gallery">
+			{% for item in system.systemimage_set.all %}
+			{% if not item.is_primary %}
+				<div class="gallery__item">
+					<img class="gallery__image" src="{{ MEDIA_URL }}{{ item.image }}" alt="{{ system.name }}" />
+				</div>
+			{% endif %}
+			{% endfor %}
+			</div>
+			{% endif %}
+		</div>
+	</div>
+</section>
+{% endblock content %}

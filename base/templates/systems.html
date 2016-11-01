@@ -5,7 +5,9 @@
 		<div class="section__row">
 		{% for system in systems %}
 			<div class="item" id="{{ system.slug }}">
-				<img class="item__image" src="{{ system.image.url }}" alt="{{ system.name }}" />
+				<a href="{% url 'base:system-detail' slug=system.slug %}">
+					<img class="item__image" src="{{ system.image.url }}" alt="{{ system.name }}" />
+				</a>
 				<h3 class="item__name">System: {{ system.name }} <a href="#{{ system.slug }}"><i class="fa fa-chain"></i></a></h3>
 
 				{% if system.info %}

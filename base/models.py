@@ -31,13 +31,6 @@ class BaseWork(Base):
     texts = ManyToManyField('Text', blank=True)
     press = HTMLField(blank=True, null=True)
 
-    @property
-    def primary_image(self):
-        qs = self.projectimage_set.filter(is_primary=1)
-        if len(qs) > 0:
-            return qs[0]
-        return None
-
 
 class BaseImage(Model):
     class Meta:
@@ -69,6 +62,13 @@ class Project(BaseWork):
     system = ForeignKey('System', related_name='project_system', blank=True, null=True)
     talks = ManyToManyField('Talk', related_name='project_talks', blank=True)
 
+    @property
+    def primary_image(self):
+        qs = self.projectimage_set.filter(is_primary=1)
+        if len(qs) > 0:
+            return qs[0]
+        return None
+
 
 class System(BaseWork):
     class Meta:
@@ -76,6 +76,13 @@ class System(BaseWork):
 
     project = ForeignKey('Project', related_name='system_project', blank=True, null=True)
     talks = ManyToManyField('Talk', related_name='system_talks', blank=True)
+
+    @property
+    def primary_image(self):
+        qs = self.systemimage_set.filter(is_primary=1)
+        if len(qs) > 0:
+            return qs[0]
+        return None
 
 
 class Talk(BaseWork):

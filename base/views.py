@@ -62,11 +62,18 @@ class SystemDetailView(generic.DetailView):
 
     def get_context_data(self, **kwargs):
         context = super(SystemDetailView, self).get_context_data(**kwargs)
+
+        today = datetime.now().date()
+
+        context['events'] = Event.objects.filter(date__gte=today)
+        context['content_blocks'] = ContentBlock.objects.all()
+        context['projects'] = Project.objects.all()
+        context['systems'] = System.objects.all()
+        context['talks'] = Talk.objects.all()
+        context['texts'] = Text.objects.all()
+        context['site_url'] = settings.SITE_URL
+
         return context
-
-
-def project(request, slug):
-    return ProjectDetailView.as_view(request, slug=slug)
 
 
 class PastView(generic.TemplateView):

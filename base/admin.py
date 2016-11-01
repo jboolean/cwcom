@@ -9,7 +9,6 @@ from .models import (
     System,
     SystemImage,
     Talk,
-    TalkImage,
     Text,
     Event
 )
@@ -28,15 +27,6 @@ class SystemImageInline(admin.TabularInline):
     model = SystemImage
     verbose_name = 'System Image'
     verbose_name_plural = 'System Images'
-    fields = ('image', 'image_tag', 'order', 'is_primary')
-    readonly_fields = ('image_tag',)
-    extra = 1
-
-
-class TalkImageInline(admin.TabularInline):
-    model = TalkImage
-    verbose_name = 'Talk Image'
-    verbose_name_plural = 'Talk Images'
     fields = ('image', 'image_tag', 'order', 'is_primary')
     readonly_fields = ('image_tag',)
     extra = 1
@@ -75,8 +65,6 @@ class TalkAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('name',)}
     readonly_fields = ('url',)
     list_display = ('name', 'url')
-    inlines = [ TalkImageInline, ]
-    exclude = ('images',)
 
 
 class EventAdmin(admin.ModelAdmin):
@@ -92,5 +80,4 @@ admin.site.register(ProjectImage)
 admin.site.register(System, SystemAdmin)
 admin.site.register(SystemImage)
 admin.site.register(Talk, TalkAdmin)
-admin.site.register(TalkImage)
 admin.site.register(Event, EventAdmin)

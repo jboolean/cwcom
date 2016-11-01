@@ -33,7 +33,10 @@ class BaseWork(Base):
 
     @property
     def primary_image(self):
-        return self.projectimage_set.filter(is_primary=1)[0]
+        qs = self.projectimage_set.filter(is_primary=1)
+        if len(qs) > 0:
+            return qs[0]
+        return None
 
 
 class BaseImage(Model):

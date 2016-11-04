@@ -5,7 +5,6 @@
 		<div class="section__row">
 		{% for talk in talks %}
 			<div class="item item--text" id="{{ talk.slug }}">
-				<img class="item__image" src="{{ talk.image.url }}" alt="{{ talk.name }}" />
 				<h3 class="item__name">Talk: {{ talk.name }} <a href="#{{ talk.slug }}"><i class="fa fa-chain"></i></a></h3>
 
 				{% if talk.info %}

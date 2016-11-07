@@ -2,22 +2,17 @@
 <section class="section section--texts" id="texts">
 	<h2 class="section__header">TEXTS  <a href="#texts"><i class="fa fa-chain fa-chain-big"></i></a></h2>
 		<div class="section__content">
-			<div class="section__row section__row--texts">
 			{% for text in texts %}
-				<div class="item item--text" id="{{ text.slug }}">
-					<h3 class="item__name">{{ text.name }}  <a href="#{{ text.slug }}"><i class="fa fa-chain"></i></a></h3>
-					{% if text.pdf %}
+			<div class="event" id="{{ text.slug }}">
+				<h3 class="event__time">{{ text.name }} <a href="#{{ text.slug }}"><i class="fa fa-chain"></i></a></h3>
+				{% if text.pdf %}
+				<span class="event__name">
 					<a href="{{ MEDIA_URL }}{{ text.pdf }}">Download PDF</a>
-					{% endif %}
-					<div class="item__description">{{ text.description|safe }}</div>
-					{% if text.description|length > 300 %}
-					<a href="#" class="item__toggle">read more</a>
-					{% endif %}
-				</div>
-			{% if forloop.counter|divisibleby:"2" %}
+				</span>
+				{% endif %}
+				<br />
+				<div class="event__description">{{ text.description|safe }}</div>
 			</div>
-			<div class="row">
-			{% endif %}
 			{% endfor %}
 		</div>
 	</div>

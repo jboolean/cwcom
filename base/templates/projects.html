@@ -10,7 +10,14 @@
 				<a href="{% url 'base:project-detail' slug=project.slug %}">
 					<img class="item__image" src="{{ MEDIA_URL }}{{ project.primary_image.image }}" alt="{{ project.name }}" />
 				</a>
-				<h3 class="item__name">Project: {{ project.name }} <a href="#{{ project.slug }}"><i class="fa fa-chain"></i></a></h3>
+				<h3 class="item__name">
+					<a href="{% url 'base:project-detail' slug=project.slug %}">
+						Project: {{ project.name }}
+					</a>
+					<a href="{% url 'base:project-detail' slug=project.slug %}">
+						<i class="fa fa-chain"></i>
+					</a>
+				</h3>
 
 				{% if project.info %}
 				<div class="item__meta">

@@ -8,7 +8,14 @@
 				<a href="{% url 'base:system-detail' slug=system.slug %}">
 					<img class="item__image" src="{{ MEDIA_URL }}{{ system.primary_image.image }}" alt="{{ system.name }}" />
 				</a>
-				<h3 class="item__name">System: {{ system.name }} <a href="#{{ system.slug }}"><i class="fa fa-chain"></i></a></h3>
+				<h3 class="item__name">
+					<a href="{% url 'base:system-detail' slug=system.slug %}">
+						System: {{ system.name }}
+					</a>
+					<a href="{% url 'base:system-detail' slug=system.slug %}">
+						<i class="fa fa-chain"></i>
+					</a>
+				</h3>
 
 				{% if system.info %}
 				<div class="item__meta">

@@ -87,5 +87,9 @@ class PastView(generic.TemplateView):
         context['events'] = Event.objects.filter(date__lte=today)
         context['content_blocks'] = ContentBlock.objects.all()
         context['site_url'] = settings.SITE_URL
+        context['projects'] = Project.objects.all()
+        context['systems'] = System.objects.all()
+        context['talks'] = Talk.objects.all()
+        context['texts'] = Text.objects.all()
 
         return context

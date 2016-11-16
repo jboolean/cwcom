@@ -1,10 +1,6 @@
 <nav class="navigation">
 	<div class="navigation__navicon">&#9776;</div>
 	<ul class="navigation__menu">
-		<li class="menu__item">
-			<a href="{{ site_url }}#header">Caroline Woolard</a>
-		</li>
-
 		{% if projects %}
 		<li class="menu__item">
 			<a href="{{ site_url }}#projects">Projects</a>
@@ -20,6 +16,12 @@
 		{% if talks %}
 		<li class="menu__item">
 			<a href="{{ site_url }}#talks">Talks</a>
+		</li>
+		{% endif %}
+
+		{% if events %}
+		<li class="menu__item">
+			<a href="{{ site_url }}#events">Events</a>
 		</li>
 		{% endif %}
 

@@ -5,6 +5,12 @@
 		<div class="section__row">
 		{% for talk in talks %}
 			<div class="item item--text" id="{{ talk.slug }}">
+				{% if talk.primary_image %}
+				<a href="{{ talk.link }}" target="_blank">
+					<img class="item__image" src="{{ MEDIA_URL }}{{ talk.primary_image.image }}" alt="{{ item.name }}" />
+				</a>
+				{% endif %}
+
 				<h3 class="item__name">
 					Talk: <a href="{{ talk.link }}" target="_blank">{{ talk.name }}</a> <a href="#{{ talk.slug }}"><i class="fa fa-chain"></i></a>
 				</h3>

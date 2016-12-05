@@ -46,7 +46,7 @@
 
 				{% if project.talks.all %}
 				<div class="item__meta">
-					<span class="item__key">Talks: </span>
+					<span class="item__key">Media: </span>
 					<span class="item__value">
 					{% for talk in project.talks.all %}
 						<a class="item__talk" href="#{{talk.slug}}">{{talk.name}}</a>{% if forloop.last %}{% else %}, {% endif %}

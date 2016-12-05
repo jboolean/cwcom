@@ -87,6 +87,8 @@ class System(BaseWork):
 
 class Talk(BaseWork):
     class Meta:
+        verbose_name = 'Media'
+        verbose_name_plural = 'Media'
         ordering = ['name',]
 
     project = ForeignKey('Project', related_name='talk_project', blank=True, null=True)
@@ -121,4 +123,8 @@ class SystemImage(BaseImage):
 
 
 class TalkImage(BaseImage):
+    class Meta:
+        verbose_name = 'Media Image'
+        verbose_name_plural = 'Media Images'
+
     talk = ForeignKey('Talk')

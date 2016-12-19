@@ -34,7 +34,7 @@
 				<span class="item__key">Texts: </span>
 				<span class="item__value">
 				{% for text in project.texts.all %}
-					<a class="item__text" href="{{ site_url }}#{{text.slug}}">{{text.name}}</a>{% if forloop.last %}{% else %}, {% endif %}
+					<a class="item__text" href="{{ MEDIA_URL }}{{ text.pdf }}">{{text.name}}</a>{% if forloop.last %}{% else %}, {% endif %}
 				{% endfor %}
 				</span>
 			</div>

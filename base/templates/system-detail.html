@@ -25,7 +25,7 @@
 			{% if system.project %}
 			<div class="item__meta">
 				<span class="item__key">Project: </span>
-				<span class="item__value"><a href="#{{ system.project.slug }}">{{ system.project.name }}</a></span>
+				<span class="item__value"><a href="{{ site_url }}#{{ system.project.slug }}">{{ system.project.name }}</a></span>
 			</div>
 			{% endif %}
 
@@ -34,7 +34,7 @@
 				<span class="item__key">Texts: </span>
 				<span class="item__value">
 				{% for text in system.texts.all %}
-					<a class="item__text" href="#{{text.slug}}">{{text.name}}</a>{% if forloop.last %}{% else %}, {% endif %}
+					<a class="item__text" href="{{ site_url }}#{{text.slug}}">{{text.name}}</a>{% if forloop.last %}{% else %}, {% endif %}
 				{% endfor %}
 				</span>
 			</div>
@@ -45,7 +45,7 @@
 				<span class="item__key">Media: </span>
 				<span class="item__value">
 				{% for talk in system.talks.all %}
-					<a class="item__talk" href="#{{talk.slug}}">{{talk.name}}</a>{% if forloop.last %}{% else %}, {% endif %}
+					<a class="item__talk" href="{{ site_url }}#{{talk.slug}}">{{talk.name}}</a>{% if forloop.last %}{% else %}, {% endif %}
 				{% endfor %}
 				</span>
 			</div>

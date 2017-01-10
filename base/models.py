@@ -96,6 +96,13 @@ class Talk(BaseWork):
     talks = ManyToManyField('self', related_name='talk_talks', blank=True)
     link = URLField()
 
+    @property
+    def primary_image(self):
+        qs = self.talkimage_set.filter(is_primary=1)
+        if len(qs) > 0:
+            return qs[0]
+        return None
+
 
 class Text(Base):
     class Meta:

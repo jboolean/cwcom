@@ -106,10 +106,23 @@ class Talk(BaseWork):
 
 class Text(Base):
     class Meta:
-        ordering = ['name']
+        ordering = ['category', 'name']
+
+    TEXT = 'tx'
+    TEACHING = 'teaching'
+
+    CATEGORY_CHOICES = (
+        (TEXT, 'Text'),
+        (TEACHING, 'Teaching')
+    )
 
     description = HTMLField(blank=True, null=True)
     pdf = FileField(upload_to='texts', blank=True, null=True)
+    category = CharField(max_length=20, choices=CATEGORY_CHOICES, default=TEXT)
+
+    @property
+    def is_teaching(self):
+        return self.category == TEACHING
 
 
 class Event(Base):

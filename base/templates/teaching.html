@@ -1,0 +1,20 @@
+{% if teaching_texts %}
+<section class="section section--texts" id="teaching">
+  <h2 class="section__header">TEACHING  <a href="#teaching"><i class="fa fa-chain fa-chain-big"></i></a></h2>
+    <div class="section__content">
+      {% for text in teaching_texts %}
+      <div class="event" id="{{ text.slug }}">
+        <h3 class="event__time">{{ text.name }} <a href="#{{ text.slug }}"><i class="fa fa-chain"></i></a></h3>
+        {% if text.pdf %}
+        <span class="event__name">
+          <a href="{{ MEDIA_URL }}{{ text.pdf }}">Download PDF</a>
+        </span>
+        {% endif %}
+        <br />
+        <div class="event__description">{{ text.description|safe }}</div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}

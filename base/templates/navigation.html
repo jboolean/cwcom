@@ -33,6 +33,12 @@
 		</li>
 		{% endif %}
 
+		{% if teaching_texts %}
+		<li class="menu__item">
+			<a href="{{ site_url }}#teaching">Teaching</a>
+		</li>
+		{% endif %}
+
 		{% for content_block in content_blocks %}
 		{% if not forloop.first %}
 		<li class="menu__item">

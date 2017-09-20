@@ -27,7 +27,8 @@ class IndexView(generic.TemplateView):
         context['projects'] = Project.objects.all()
         context['systems'] = System.objects.all()
         context['talks'] = Talk.objects.all()
-        context['texts'] = Text.objects.all()
+        context['texts'] = Text.objects.filter(category='tx')
+        context['teaching_texts'] = Text.objects.filter(category='teaching')
         context['site_url'] = settings.SITE_URL
 
         if 'slug' in self.kwargs:
@@ -50,7 +51,8 @@ class ProjectDetailView(generic.DetailView):
         context['projects'] = Project.objects.all()
         context['systems'] = System.objects.all()
         context['talks'] = Talk.objects.all()
-        context['texts'] = Text.objects.all()
+        context['texts'] = Text.objects.filter(category='tx')
+        context['teaching_texts'] = Text.objects.filter(category='teaching')
         context['site_url'] = settings.SITE_URL
 
         return context
@@ -70,7 +72,8 @@ class SystemDetailView(generic.DetailView):
         context['projects'] = Project.objects.all()
         context['systems'] = System.objects.all()
         context['talks'] = Talk.objects.all()
-        context['texts'] = Text.objects.all()
+        context['texts'] = Text.objects.filter(category='tx')
+        context['teaching_texts'] = Text.objects.filter(category='teaching')
         context['site_url'] = settings.SITE_URL
 
         return context
@@ -90,6 +93,7 @@ class PastView(generic.TemplateView):
         context['projects'] = Project.objects.all()
         context['systems'] = System.objects.all()
         context['talks'] = Talk.objects.all()
-        context['texts'] = Text.objects.all()
+        context['texts'] = Text.objects.filter(category='tx')
+        context['teaching_texts'] = Text.objects.filter(category='teaching')
 
         return context

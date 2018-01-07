@@ -9,7 +9,17 @@
 <!-- eventS -->
 <section class="section section--events section--past-events" id="past-events">
 	<h2 class="section__header">PAST EVENTS  <a href="#past-events"><i class="fa fa-chain fa-chain-big"></i></a></h2>
-	{% include 'events.html' %}
+	<div class="section__content">
+  {% for event in events %}
+  <div class="event" id="{{ event.slug }}">
+    <h3 class="event__time">{{ event.name }} <a href="#{{ event.slug }}"><i class="fa fa-chain"></i></a></h3>
+    <span class="event__name">{{ event.date|date:"l, F j Y, g:iA" }}</span>
+    <br />
+    <div class="event__description">{{ event.description|safe }}</div>
+    <a class="event__rsvp" href="{{ event.link }}" target="_blank">RSVP</a>
+  </div>
+  {% endfor %}
+</div>
 </section>
 
 {% endblock content %}

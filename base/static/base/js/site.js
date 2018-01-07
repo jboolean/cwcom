@@ -109,7 +109,9 @@ var scrollToSlug = function() {
 
 document.addEventListener('DOMContentLoaded', function() {
 	bindEvents();
-	bindPortfolio();
+	if (document.querySelector('.section--portolio')) {
+		bindPortfolio();
+	}
 });
 
 // scrollToSlug();

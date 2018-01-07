@@ -134,6 +134,11 @@ class Event(Base):
     link = URLField()
 
 
+class Portfolio(Base):
+    class Meta:
+        ordering = ['name',]
+
+
 class ProjectImage(BaseImage):
     project = ForeignKey('Project')
 
@@ -148,3 +153,10 @@ class TalkImage(BaseImage):
         verbose_name_plural = 'Media Images'
 
     talk = ForeignKey('Talk')
+
+
+class PortfolioImage(BaseImage):
+    portfolio = ForeignKey('Portfolio')
+    name = CharField(max_length=200, null=True, blank=True)
+    caption = CharField(max_length=200, null=True, blank=True)
+    is_active = BooleanField(default=True)

@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block navigation %}
+{% include 'navigation.html' %}
+{% endblock navigation %}
+
+{% block content %}
+
+<section class="section section--portolio" id="portfolio">
+  <div class="section__content">
+    <div class="items">
+    {% for item in portfolio.portfolioimage_set.all %}
+      <div class="portfolio-item" id="{{ item.name }}">
+        <img class="portfolio-item__image" src="{{ MEDIA_URL }}{{ item.image }}" alt="{{ item.name }}" />
+        <h3 class="portfolio-item__name">
+          <span>
+            {{ item.name }}
+          </span>
+          {{ item.caption }}
+        </h3>
+      </div>
+    {% endfor %}
+      <div class="portfolio-controls">
+        <a class="previous">&larr;</a>
+        <a class="next">&rarr;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% include 'intro.html' %}
+
+<!-- PROJECTS -->
+{% include 'projects.html' %}
+
+<!-- SYSTEMS -->
+{% include 'systems.html' %}
+
+<!-- TALKS -->
+{% include 'talks.html' %}
+
+<!-- EVENTS -->
+{% if events %}
+<section class="section section--events" id="events">
+  <h2 class="section__header">EVENTS  <a href="#events"><i class="fa fa-chain fa-chain-big"></i></a></h2>
+  {% include 'events.html' %}
+</section>
+{% endif %}
+
+<!-- TEXTS -->
+{% include 'texts.html' %}
+
+<!-- TEACHING -->
+{% include 'teaching.html' %}
+
+{% include 'content-blocks.html' %}
+
+
+{% endblock content %}

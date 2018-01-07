@@ -420,3 +420,54 @@ body
 
 .gallery__image
   width: 100%
+
+.section--portolio
+  padding-top: 10rem
+
+.section--portolio .items
+  position: relative
+  overflow: hidden
+  width: 100%
+  height: 80vh
+
+.portfolio-item
+  position: absolute
+  height: 100%
+  opacity: 0
+  text-align: center
+  transition: all 0.2s
+
+  &.portfolio-item--show
+    opacity: 1
+
+  img
+    height: 90%
+
+.portfolio-item__name
+  margin: 0 auto
+  width: 75%
+  font-size: 1.5rem
+  font-weight: normal
+
+  span
+    font-weight: bold
+
+.portfolio-controls
+  position: absolute
+  bottom: 4rem
+  width: 100%
+
+  a
+    position: absolute
+    text-decoration: none
+    cursor: pointer
+    opacity: 0.75
+
+  a:hover
+    opacity: 1
+
+  .previous
+    left: 0
+
+  .next
+    right: 0

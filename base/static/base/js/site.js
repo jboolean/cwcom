@@ -42,6 +42,59 @@ var bindEvents = function() {
 	}
 };
 
+
+var bindPortfolio = function() {
+	var i;
+
+	var elements = {
+		items: document.querySelectorAll('.section--portolio .portfolio-item'),
+		next: document.querySelector('.section--portolio .next'),
+		previous: document.querySelector('.section--portolio .previous')
+	};
+
+	var count = elements.items.length;
+	var activeClassName = 'portfolio-item--show';
+
+	var activeItemIndex = function() {
+		for (i = 0; i < count; i++) {
+			if (elements.items[i].classList.contains(activeClassName)) {
+				return i;
+			}
+		}
+
+		return -1;
+	}
+
+	var showItem = function(index) {
+		for (i = 0; i < elements.items.length; i++) {
+			elements.items[i].classList.remove(activeClassName);
+
+			if (i === index) {
+				elements.items[i].classList.add(activeClassName);
+			}
+		}
+	}
+
+	// navigation
+	elements.previous.addEventListener('click', function(e) {
+		e.preventDefault();
+		var index = activeItemIndex();
+		index = index <= 0 ? count - 1 : index - 1;
+		showItem(index);
+	});
+
+	elements.next.addEventListener('click', function(e) {
+		e.preventDefault();
+		var index = activeItemIndex();
+		index = index >= count - 1 ? 0 : index + 1;
+		showItem(index);
+	});
+
+	// hide all items but first
+	showItem(0);
+};
+
+
 var scrollToSlug = function() {
 	var urlParts = window.location.href.split('/').filter(Boolean);
 
@@ -56,6 +109,7 @@ var scrollToSlug = function() {
 
 document.addEventListener('DOMContentLoaded', function() {
 	bindEvents();
+	bindPortfolio();
 });
 
 // scrollToSlug();

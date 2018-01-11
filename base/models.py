@@ -157,6 +157,11 @@ class TalkImage(BaseImage):
 
 
 class PortfolioImage(BaseImage):
+    class Meta:
+        verbose_name = 'Portfolio Image'
+        verbose_name_plural = 'Portfolio Images'
+        ordering = ['order',]
+
     portfolio = ForeignKey('Portfolio')
     name = CharField(max_length=200, null=True, blank=True)
     caption = CharField(max_length=200, null=True, blank=True)

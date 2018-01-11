@@ -100,8 +100,9 @@ class PastView(generic.TemplateView):
         return context
 
 
-class PortfolioView(generic.TemplateView):
+class PortfolioView(generic.DetailView):
     template_name = 'portfolio.html'
+    model = Portfolio
 
     def get_context_data(self, **kwargs):
         context = super(PortfolioView, self).get_context_data(**kwargs)
@@ -116,8 +117,5 @@ class PortfolioView(generic.TemplateView):
         context['texts'] = Text.objects.filter(category='tx')
         context['teaching_texts'] = Text.objects.filter(category='teaching')
         context['site_url'] = settings.SITE_URL
-
-        context['portfolio'] = Portfolio.objects.all()[0]
-
 
         return context

@@ -428,46 +428,75 @@ body
   position: relative
   overflow: hidden
   width: 100%
-  height: 80vh
+  height: 60vh
+
+  @media (min-width: $tablet)
+    height: 80vh
 
 .portfolio-item
   position: absolute
-  height: 100%
+  width: 100%
+  height: auto
   opacity: 0
   text-align: center
   transition: all 0.2s
+
+  @media (min-width: $tablet)
+    height: 100%
+    width: auto
 
   &.portfolio-item--show
     opacity: 1
 
   img
-    height: 90%
+    height: auto
+    width: 100%
+
+    @media (min-width: $tablet)
+      height: 90%
+      width: auto
 
 .portfolio-item__name
-  margin: 0 auto
-  width: 75%
+  margin: 1rem auto 0
+  width: 100%
   font-size: 1.5rem
   font-weight: normal
+  text-align: left
+
+  @media (min-width: $tablet)
+    width: 75%
+    margin: 0 auto
+    text-align: center
 
   span
     font-weight: bold
 
 .portfolio-controls
   position: absolute
-  bottom: 4rem
   width: 100%
+  bottom: 4rem
 
   a
     position: absolute
     text-decoration: none
     cursor: pointer
     opacity: 0.75
+    padding: 2rem
+
+    @media (min-width: $tablet)
+      padding: 0
 
   a:hover
     opacity: 1
 
   .previous
-    left: 0
+    left: -2rem
+
+    @media (min-width: $tablet)
+      left: 0
 
   .next
-    right: 0
+    right: -2rem
+
+    @media (min-width: $tablet)
+      right: 0

@@ -21,7 +21,7 @@ class PortfolioImageInline(admin.TabularInline):
     model = PortfolioImage
     verbose_name = 'Portfolio Image'
     verbose_name_plural = 'Portfolio Images'
-    fields = ('image', 'image_tag', 'order', 'name', 'caption')
+    fields = ('image', 'image_tag', 'order', 'name', 'caption', 'project', 'system')
     readonly_fields = ('image_tag',)
     extra = 1
 

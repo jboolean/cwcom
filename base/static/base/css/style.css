@@ -388,39 +388,68 @@ body {
   position: relative;
   overflow: hidden;
   width: 100%;
-  height: 80vh; }
+  height: 60vh; }
+  @media (min-width: 768px) {
+    .section--portolio .items {
+      height: 80vh; } }
 
 .portfolio-item {
   position: absolute;
-  height: 100%;
+  width: 100%;
+  height: auto;
   opacity: 0;
   text-align: center;
   transition: all 0.2s; }
+  @media (min-width: 768px) {
+    .portfolio-item {
+      height: 100%;
+      width: auto; } }
   .portfolio-item.portfolio-item--show {
     opacity: 1; }
   .portfolio-item img {
-    height: 90%; }
+    height: auto;
+    width: 100%; }
+    @media (min-width: 768px) {
+      .portfolio-item img {
+        height: 90%;
+        width: auto; } }
 
 .portfolio-item__name {
-  margin: 0 auto;
-  width: 75%;
+  margin: 1rem auto 0;
+  width: 100%;
   font-size: 1.5rem;
-  font-weight: normal; }
+  font-weight: normal;
+  text-align: left; }
+  @media (min-width: 768px) {
+    .portfolio-item__name {
+      width: 75%;
+      margin: 0 auto;
+      text-align: center; } }
   .portfolio-item__name span {
     font-weight: bold; }
 
 .portfolio-controls {
   position: absolute;
-  bottom: 4rem;
-  width: 100%; }
+  width: 100%;
+  bottom: 4rem; }
   .portfolio-controls a {
     position: absolute;
     text-decoration: none;
     cursor: pointer;
-    opacity: 0.75; }
+    opacity: 0.75;
+    padding: 2rem; }
+    @media (min-width: 768px) {
+      .portfolio-controls a {
+        padding: 0; } }
   .portfolio-controls a:hover {
     opacity: 1; }
   .portfolio-controls .previous {
-    left: 0; }
+    left: -2rem; }
+    @media (min-width: 768px) {
+      .portfolio-controls .previous {
+        left: 0; } }
   .portfolio-controls .next {
-    right: 0; }
+    right: -2rem; }
+    @media (min-width: 768px) {
+      .portfolio-controls .next {
+        right: 0; } }

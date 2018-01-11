@@ -3,6 +3,7 @@ from django.conf import settings
 from django.db.models import *
 from django.utils.html import format_html
 from tinymce.models import HTMLField
+from django.core.urlresolvers import reverse
 
 
 class Base(Model):
@@ -160,3 +161,21 @@ class PortfolioImage(BaseImage):
     name = CharField(max_length=200, null=True, blank=True)
     caption = CharField(max_length=200, null=True, blank=True)
     is_active = BooleanField(default=True)
+    project = ForeignKey(Project, blank=True, null=True)
+    system = ForeignKey(System, blank=True, null=True)
+
+    @property
+    def has_url(self):
+        if self.project or self.system:
+            return True
+        return False
+
+    @property
+    def url(self):
+        if self.project:
+            return reverse('base:project-detail', kwargs={'slug':self.project.slug})
+
+        if self.system:
+            return reverse('base:system-detail', kwargs={'slug':self.system.slug})
+
+        return None

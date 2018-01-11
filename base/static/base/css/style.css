@@ -403,7 +403,7 @@ body {
   @media (min-width: 768px) {
     .portfolio-item {
       height: 100%;
-      width: auto; } }
+      width: inherit; } }
   .portfolio-item.portfolio-item--show {
     opacity: 1; }
   .portfolio-item img {

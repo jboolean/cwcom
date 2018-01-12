@@ -102,7 +102,9 @@ class PastView(generic.TemplateView):
 
 class PortfolioView(generic.DetailView):
     template_name = 'portfolio.html'
-    model = Portfolio
+
+    def get_object(self):
+        return get_object_or_404(Portfolio, slug='portfolio')
 
     def get_context_data(self, **kwargs):
         context = super(PortfolioView, self).get_context_data(**kwargs)

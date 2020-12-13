@@ -31,7 +31,7 @@ class BaseWork(Base):
     description = HTMLField(blank=True, null=True)
     texts = ManyToManyField('Text', blank=True)
     press = HTMLField(blank=True, null=True)
-
+    is_active = BooleanField(default=True)
 
 class BaseImage(Model):
     class Meta:

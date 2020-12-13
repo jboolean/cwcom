@@ -25,9 +25,9 @@ class IndexView(generic.TemplateView):
 
         context['events'] = Event.objects.filter(date__gte=today)
         context['content_blocks'] = ContentBlock.objects.all()
-        context['projects'] = Project.objects.all()
-        context['systems'] = System.objects.all()
-        context['talks'] = Talk.objects.all()
+        context['projects'] = Project.objects.filter(is_active=True)
+        context['systems'] = System.objects.filter(is_active=True)
+        context['talks'] = Talk.objects.filter(is_active=True)
         context['texts'] = Text.objects.filter(category='tx')
         context['teaching_texts'] = Text.objects.filter(category='teaching')
         context['site_url'] = settings.SITE_URL
@@ -49,9 +49,9 @@ class ProjectDetailView(generic.DetailView):
 
         context['events'] = Event.objects.filter(date__gte=today)
         context['content_blocks'] = ContentBlock.objects.all()
-        context['projects'] = Project.objects.all()
-        context['systems'] = System.objects.all()
-        context['talks'] = Talk.objects.all()
+        context['projects'] = Project.objects.filter(is_active=True)
+        context['systems'] = System.objects.filter(is_active=True)
+        context['talks'] = Talk.objects.filter(is_active=True)
         context['texts'] = Text.objects.filter(category='tx')
         context['teaching_texts'] = Text.objects.filter(category='teaching')
         context['site_url'] = settings.SITE_URL
@@ -70,9 +70,9 @@ class SystemDetailView(generic.DetailView):
 
         context['events'] = Event.objects.filter(date__gte=today)
         context['content_blocks'] = ContentBlock.objects.all()
-        context['projects'] = Project.objects.all()
-        context['systems'] = System.objects.all()
-        context['talks'] = Talk.objects.all()
+        context['projects'] = Project.objects.filter(is_active=True)
+        context['systems'] = System.objects.filter(is_active=True)
+        context['talks'] = Talk.objects.filter(is_active=True)
         context['texts'] = Text.objects.filter(category='tx')
         context['teaching_texts'] = Text.objects.filter(category='teaching')
         context['site_url'] = settings.SITE_URL
@@ -91,9 +91,9 @@ class PastView(generic.TemplateView):
         context['events'] = Event.objects.filter(date__lte=today).order_by('-date')
         context['content_blocks'] = ContentBlock.objects.all()
         context['site_url'] = settings.SITE_URL
-        context['projects'] = Project.objects.all()
-        context['systems'] = System.objects.all()
-        context['talks'] = Talk.objects.all()
+        context['projects'] = Project.objects.filter(is_active=True)
+        context['systems'] = System.objects.filter(is_active=True)
+        context['talks'] = Talk.objects.filter(is_active=True)
         context['texts'] = Text.objects.filter(category='tx')
         context['teaching_texts'] = Text.objects.filter(category='teaching')
 
@@ -111,9 +111,9 @@ class PortfolioView(generic.DetailView):
 
         context['events'] = Event.objects.filter(date__gte=today)
         context['content_blocks'] = ContentBlock.objects.all()
-        context['projects'] = Project.objects.all()
-        context['systems'] = System.objects.all()
-        context['talks'] = Talk.objects.all()
+        context['projects'] = Project.objects.filter(is_active=True)
+        context['systems'] = System.objects.filter(is_active=True)
+        context['talks'] = Talk.objects.filter(is_active=True)
         context['texts'] = Text.objects.filter(category='tx')
         context['teaching_texts'] = Text.objects.filter(category='teaching')
         context['site_url'] = settings.SITE_URL

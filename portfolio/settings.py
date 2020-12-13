@@ -148,4 +148,9 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads')
 # Example: "/home/media/media.lawrence.com/"
 MEDIA_URL = '/uploads/'
 
-SITE_URL = 'http://127.0.0.1:8000'
+SITE_URL = 'http://carolinewoolard.com/'
+
+STATIC_ROOT = '/home/theyoungest/webapps/cw_static'
+STATIC_URL = 'http://carolinewoolard.com/static/'
+MEDIA_ROOT = '/home/theyoungest/webapps/cw_static/uploads'
+MEDIA_URL = 'http://carolinewoolard.com/static/uploads/'

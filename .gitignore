@@ -70,7 +70,7 @@ target/
 .ipynb_checkpoints
 
 # pyenv
-.python-version
+# .python-version
 
 # celery beat schedule file
 celerybeat-schedule
@@ -108,3 +108,5 @@ db.sqlite3
 base/static/base/css/.sass-cache
 
 .DS_Store
+
+.venv/

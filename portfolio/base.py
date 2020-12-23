@@ -138,19 +138,3 @@ TINYMCE_DEFAULT_CONFIG = {
     'custom_undo_redo_levels': 10,
 }
 
-
-# Absolute filesystem path to the directory that will hold user-uploaded files.
-# Example: "/home/media/media.lawrence.com/media/"
-MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads')
-
-
-# Absolute path to the directory that holds media.
-# Example: "/home/media/media.lawrence.com/"
-MEDIA_URL = '/uploads/'
-
-SITE_URL = 'http://carolinewoolard.com/'
-
-STATIC_ROOT = '/home/theyoungest/webapps/cw_static'
-STATIC_URL = 'http://carolinewoolard.com/static/'
-MEDIA_ROOT = '/home/theyoungest/webapps/cw_static/uploads'
-MEDIA_URL = 'http://carolinewoolard.com/uploads/'

@@ -39,7 +39,7 @@ class Migration(migrations.Migration):
                 ('created', models.DateTimeField(auto_now_add=True)),
                 ('updated', models.DateTimeField(auto_now=True)),
                 ('is_active', models.BooleanField(default=True)),
-                ('portfolio', models.ForeignKey(to='base.Portfolio')),
+                ('portfolio', models.ForeignKey(to='base.Portfolio', on_delete = models.CASCADE)),
             ],
             options={
                 'abstract': False,

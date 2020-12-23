@@ -22,7 +22,7 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='portfolioimage',
             name='content_type',
-            field=models.ForeignKey(blank=True, to='contenttypes.ContentType', null=True),
+            field=models.ForeignKey(blank=True, to='contenttypes.ContentType', null=True, on_delete = models.CASCADE),
         ),
         migrations.AlterField(
             model_name='portfolioimage',

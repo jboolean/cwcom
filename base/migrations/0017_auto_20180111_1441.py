@@ -22,11 +22,11 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='portfolioimage',
             name='project',
-            field=models.ForeignKey(blank=True, to='base.Project', null=True),
+            field=models.ForeignKey(blank=True, to='base.Project', null=True, on_delete = models.CASCADE),
         ),
         migrations.AddField(
             model_name='portfolioimage',
             name='system',
-            field=models.ForeignKey(blank=True, to='base.System', null=True),
+            field=models.ForeignKey(blank=True, to='base.System', null=True, on_delete = models.CASCADE),
         ),
     ]

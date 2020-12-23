@@ -45,7 +45,7 @@ INSTALLED_APPS = [
     'tinymce',
 ]
 
-MIDDLEWARE_CLASSES = [
+MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -153,4 +153,4 @@ SITE_URL = 'http://carolinewoolard.com/'
 STATIC_ROOT = '/home/theyoungest/webapps/cw_static'
 STATIC_URL = 'http://carolinewoolard.com/static/'
 MEDIA_ROOT = '/home/theyoungest/webapps/cw_static/uploads'
-MEDIA_URL = 'http://carolinewoolard.com/static/uploads/'
+MEDIA_URL = 'http://carolinewoolard.com/uploads/'

@@ -3,7 +3,7 @@ from django.conf import settings
 from django.db.models import *
 from django.utils.html import format_html
 from tinymce.models import HTMLField
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 
 
 class Base(Model):
@@ -60,7 +60,7 @@ class Project(BaseWork):
     class Meta:
         ordering = ['name',]
 
-    system = ForeignKey('System', related_name='project_system', blank=True, null=True)
+    system = ForeignKey('System', related_name='project_system', blank=True, null=True, on_delete=CASCADE)
     talks = ManyToManyField('Talk', related_name='project_talks', blank=True)
 
     @property
@@ -75,7 +75,7 @@ class System(BaseWork):
     class Meta:
         ordering = ['name',]
 
-    project = ForeignKey('Project', related_name='system_project', blank=True, null=True)
+    project = ForeignKey('Project', related_name='system_project', blank=True, null=True, on_delete=CASCADE)
     talks = ManyToManyField('Talk', related_name='system_talks', blank=True)
 
     @property
@@ -92,8 +92,8 @@ class Talk(BaseWork):
         verbose_name_plural = 'Media'
         ordering = ['name',]
 
-    project = ForeignKey('Project', related_name='talk_project', blank=True, null=True)
-    system = ForeignKey('System', related_name='talk_system', blank=True, null=True)
+    project = ForeignKey('Project', related_name='talk_project', blank=True, null=True, on_delete=CASCADE)
+    system = ForeignKey('System', related_name='talk_system', blank=True, null=True, on_delete=CASCADE)
     talks = ManyToManyField('self', related_name='talk_talks', blank=True)
     link = URLField()
 
@@ -141,11 +141,11 @@ class Portfolio(Base):
 
 
 class ProjectImage(BaseImage):
-    project = ForeignKey('Project')
+    project = ForeignKey('Project', on_delete=CASCADE)
 
 
 class SystemImage(BaseImage):
-    system = ForeignKey('System')
+    system = ForeignKey('System', on_delete=CASCADE)
 
 
 class TalkImage(BaseImage):
@@ -153,7 +153,7 @@ class TalkImage(BaseImage):
         verbose_name = 'Media Image'
         verbose_name_plural = 'Media Images'
 
-    talk = ForeignKey('Talk')
+    talk = ForeignKey('Talk', on_delete=CASCADE)
 
 
 class PortfolioImage(BaseImage):
@@ -162,12 +162,12 @@ class PortfolioImage(BaseImage):
         verbose_name_plural = 'Portfolio Images'
         ordering = ['order',]
 
-    portfolio = ForeignKey('Portfolio')
+    portfolio = ForeignKey('Portfolio', on_delete=CASCADE)
     name = CharField(max_length=200, null=True, blank=True)
     caption = CharField(max_length=200, null=True, blank=True)
     is_active = BooleanField(default=True)
-    project = ForeignKey(Project, blank=True, null=True)
-    system = ForeignKey(System, blank=True, null=True)
+    project = ForeignKey(Project, blank=True, null=True, on_delete=CASCADE)
+    system = ForeignKey(System, blank=True, null=True, on_delete=CASCADE)
 
     @property
     def has_url(self):

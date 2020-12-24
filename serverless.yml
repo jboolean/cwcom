@@ -9,12 +9,17 @@ provider:
       Action:
       - s3:*
       Resource: arn:aws:s3:::cw-media-production/*
+  # Tags for billing tracking
+  stackTags:
+   Client: woolard
+   Project: cw
 
 plugins:
  - serverless-wsgi
  - serverless-python-requirements
  - serverless-secrets-plugin
  - serverless-apigw-binary
+ - serverless-domain-manager
 
 functions:
   app:
@@ -44,3 +49,8 @@ custom:
   apigwBinary:
     types:
       - 'multipart/form-data'
+  customDomain:
+    domainName: carolinewoolard.com
+    basePath: ''
+    stage: ${self:provider.stage}
+    createRoute53Record: true

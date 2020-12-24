@@ -1,20 +1,17 @@
 from .base import *
-import os
 
-DEBUG = False
+DEBUG = True
 
 INSTALLED_APPS += ['storages']
-
-ALLOWED_HOSTS = ['.execute-api.us-east-1.amazonaws.com', '.carolinewoolard.com']
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.environ.get('DB_DATABASE'),
-        'USER': os.environ.get('DB_USERNAME'),
-        'PASSWORD': os.environ.get('DB_PASSWORD'),
-        'HOST': os.environ.get('DB_HOST'),
-        'PORT': os.environ.get('DB_PORT'),
+        'NAME': 'cw',
+        'USER': 'cw',
+        'PASSWORD': 'B-c!Mc-q*Xry8mWDQyXCUNABXxdxgX',
+        'HOST': 'shared-projects.cioc65o5flzv.us-east-1.rds.amazonaws.com',
+        'PORT': '5432',
     }
 }
 
@@ -26,8 +23,8 @@ AWS_DEFAULT_ACL = 'public-read'
 AWS_QUERYSTRING_AUTH = False
 
 
-SITE_URL = 'https://12scbeayu9.execute-api.us-east-1.amazonaws.com/dev/'
+SITE_URL = 'http://127.0.0.1:8000/'
 
 # STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
-MEDIA_URL = 'https://%s.s3.amazonaws.com/' % AWS_STORAGE_BUCKET_NAME
+MEDIA_URL = 'http://%s.s3.amazonaws.com/' % AWS_STORAGE_BUCKET_NAME

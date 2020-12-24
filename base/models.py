@@ -46,7 +46,7 @@ class BaseImage(Model):
 
     @property
     def image_tag(self):
-        return format_html('<img src="%s/%s" height="100" />' % (settings.MEDIA_URL, self.image))
+        return format_html('<img src="%s%s" height="100" />' % (settings.MEDIA_URL, self.image))
 
 
 class ContentBlock(Base):

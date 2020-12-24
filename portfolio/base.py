@@ -130,10 +130,8 @@ STATIC_URL = '/static/'
 
 
 # TinyMCE
-TINYMCE_JS_URL = 'https://cdnjs.cloudflare.com/ajax/libs/tinymce/5.6.2/tinymce.min.js'
 TINYMCE_DEFAULT_CONFIG = {
-    'plugins': 'spellchecker,paste',
-    # 'theme': 'advanced',
+    'plugins': 'spellchecker,paste,link',
     'cleanup_on_startup': True,
     'custom_undo_redo_levels': 10,
 }

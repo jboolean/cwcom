@@ -110,3 +110,10 @@ base/static/base/css/.sass-cache
 .DS_Store
 
 .venv/
+
+node_modules
+.serverless
+.requirements
+
+# used by serverless for packages, but otherwise we use buildout.cfg for version management
+requirements.txt

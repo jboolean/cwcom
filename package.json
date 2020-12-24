@@ -1,0 +1,26 @@
+{
+  "name": "cwcom",
+  "version": "1.0.0",
+  "description": "carolinewoolard.com - serverless deployment tools",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "bootstrap": "python bootstrap.py",
+    "buildout": "./bin/buildout -N",
+    "deploy": "npm run buildout && serverless deploy"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jboolean/cwcom.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jboolean/cwcom/issues"
+  },
+  "homepage": "https://github.com/jboolean/cwcom#readme",
+  "devDependencies": {
+    "serverless-python-requirements": "^5.1.0",
+    "serverless-wsgi": "^1.7.6"
+  }
+}

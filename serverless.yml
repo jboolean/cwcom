@@ -1,0 +1,33 @@
+service: cwcom
+
+provider:
+  name: aws
+  runtime: python3.7
+
+plugins:
+ - serverless-wsgi
+ - serverless-python-requirements
+
+functions:
+  app:
+      handler: wsgi_handler.handler
+      events:
+        - http: ANY /
+        - http: ANY {proxy+}
+
+package:
+ exclude:
+  - node_modules/**
+  - uploads/**
+  - eggs/**
+  - develop-eggs/**
+  - bin/**
+  - "*.sqlite"
+
+
+custom:
+  wsgi:
+    pythonBin: python3
+    app: portfolio.wsgi.application
+  pythonRequirements:
+    dockerizePip: true

@@ -24,7 +24,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='portfolioimage',
             name='content_type',
-            field=models.ForeignKey(default=1, to='contenttypes.ContentType'),
+            field=models.ForeignKey(default=1, to='contenttypes.ContentType', on_delete = models.CASCADE),
             preserve_default=False,
         ),
         migrations.AddField(
@@ -36,6 +36,6 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='portfolioimage',
             name='parent_content_type',
-            field=models.ForeignKey(related_name='parent_test_link', blank=True, to='contenttypes.ContentType', null=True),
+            field=models.ForeignKey(related_name='parent_test_link', blank=True, to='contenttypes.ContentType', null=True, on_delete = models.CASCADE),
         ),
     ]

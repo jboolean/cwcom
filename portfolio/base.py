@@ -45,7 +45,7 @@ INSTALLED_APPS = [
     'tinymce',
 ]
 
-MIDDLEWARE_CLASSES = [
+MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -130,27 +130,11 @@ STATIC_URL = '/static/'
 
 
 # TinyMCE
-
+TINYMCE_JS_URL = 'https://cdnjs.cloudflare.com/ajax/libs/tinymce/5.6.2/tinymce.min.js'
 TINYMCE_DEFAULT_CONFIG = {
     'plugins': 'spellchecker,paste',
-    'theme': 'advanced',
+    # 'theme': 'advanced',
     'cleanup_on_startup': True,
     'custom_undo_redo_levels': 10,
 }
 
-
-# Absolute filesystem path to the directory that will hold user-uploaded files.
-# Example: "/home/media/media.lawrence.com/media/"
-MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads')
-
-
-# Absolute path to the directory that holds media.
-# Example: "/home/media/media.lawrence.com/"
-MEDIA_URL = '/uploads/'
-
-SITE_URL = 'http://carolinewoolard.com/'
-
-STATIC_ROOT = '/home/theyoungest/webapps/cw_static'
-STATIC_URL = 'http://carolinewoolard.com/static/'
-MEDIA_ROOT = '/home/theyoungest/webapps/cw_static/uploads'
-MEDIA_URL = 'http://carolinewoolard.com/static/uploads/'

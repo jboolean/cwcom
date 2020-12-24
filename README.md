@@ -3,6 +3,7 @@
 ## Install dependencies
 
 ```
+python bootstrap
 ./bin/buildout
 ```
 

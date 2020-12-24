@@ -13,10 +13,10 @@
       <div class="portfolio-item" id="{{ item.name }}">
         {% if item.has_url %}
         <a href="{{ item.url }}">
-          <img class="portfolio-item__image" src="{{ MEDIA_URL }}{{ item.image }}" alt="{{ item.name }}" />
+          <img class="portfolio-item__image" src="{{ MEDIA_URL }}{{ item.image }}" alt="{{ item.name }}" loading="lazy" />
         </a>
         {% else %}
-        <img class="portfolio-item__image" src="{{ MEDIA_URL }}{{ item.image }}" alt="{{ item.name }}" />
+        <img class="portfolio-item__image" src="{{ MEDIA_URL }}{{ item.image }}" alt="{{ item.name }}" loading="lazy" />
         {% endif %}
         <h3 class="portfolio-item__name">
           <span>

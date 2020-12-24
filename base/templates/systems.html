@@ -6,7 +6,7 @@
 		{% for system in systems %}
 			<div class="item" id="{{ system.slug }}">
 				<a href="{% url 'base:system-detail' slug=system.slug %}">
-					<img class="item__image" src="{{ MEDIA_URL }}{{ system.primary_image.image }}" alt="{{ system.name }}" />
+					<img class="item__image" src="{{ MEDIA_URL }}{{ system.primary_image.image }}" alt="{{ system.name }}" loading="lazy" />
 				</a>
 				<h3 class="item__name">
 					<a href="{% url 'base:system-detail' slug=system.slug %}">

@@ -3,10 +3,20 @@ service: cwcom
 provider:
   name: aws
   runtime: python3.7
+  stage: production
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+      - "s3:PutObject"
+      - "s3:DeleteObject"
+      - "s3:DeleteObjects"
+      - "s3:GetObject"
+      Resource: arn:aws:s3:::cw-media-production
 
 plugins:
  - serverless-wsgi
  - serverless-python-requirements
+ - serverless-secrets-plugin
 
 functions:
   app:
@@ -14,6 +24,8 @@ functions:
       events:
         - http: ANY /
         - http: ANY {proxy+}
+      environment: ${file(secrets.${opt:stage, self:provider.stage}.yml)}
+
 
 package:
  exclude:

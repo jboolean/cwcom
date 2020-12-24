@@ -7,7 +7,10 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "bootstrap": "python bootstrap.py",
     "buildout": "./bin/buildout -N",
-    "deploy": "npm run buildout && serverless deploy"
+    "collectstatic:prod": "./bin/django-prod collectstatic --no-input",
+    "migrate:prod": "serverless wsgi manage -c migrate",
+    "deploy:prod": "npm run buildout && serverless deploy && npm run collectstatic:prod && npm run migrate:prod",
+    "logs": "serverless logs -f app -t"
   },
   "repository": {
     "type": "git",
@@ -21,6 +24,7 @@
   "homepage": "https://github.com/jboolean/cwcom#readme",
   "devDependencies": {
     "serverless-python-requirements": "^5.1.0",
+    "serverless-secrets-plugin": "^0.1.0",
     "serverless-wsgi": "^1.7.6"
   }
 }

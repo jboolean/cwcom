@@ -117,3 +117,8 @@ node_modules
 
 # used by serverless for packages, but otherwise we use buildout.cfg for version management
 requirements.txt
+
+secrets.*.yml
+.serverless-wsgi
+wsgi_handler.py
+serverless_wsgi.py

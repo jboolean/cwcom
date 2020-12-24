@@ -7,16 +7,14 @@ provider:
   iamRoleStatements:
     - Effect: Allow
       Action:
-      - "s3:PutObject"
-      - "s3:DeleteObject"
-      - "s3:DeleteObjects"
-      - "s3:GetObject"
-      Resource: arn:aws:s3:::cw-media-production
+      - s3:*
+      Resource: arn:aws:s3:::cw-media-production/*
 
 plugins:
  - serverless-wsgi
  - serverless-python-requirements
  - serverless-secrets-plugin
+ - serverless-apigw-binary
 
 functions:
   app:
@@ -43,3 +41,6 @@ custom:
     app: portfolio.wsgi.application
   pythonRequirements:
     dockerizePip: true
+  apigwBinary:
+    types:
+      - 'multipart/form-data'

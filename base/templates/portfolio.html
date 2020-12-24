@@ -13,10 +13,18 @@
       <div class="portfolio-item" id="{{ item.name }}">
         {% if item.has_url %}
         <a href="{{ item.url }}">
-          <img class="portfolio-item__image" src="{{ MEDIA_URL }}{{ item.image }}" alt="{{ item.name }}" loading="lazy" />
+          <img class="portfolio-item__image" 
+            src="{{ MEDIA_URL }}{{ item.image }}" 
+            alt="{{ item.name }}" 
+            loading="{% if forloop.first %}eager{% else %}lazy{% endif %}" 
+          />
         </a>
         {% else %}
-        <img class="portfolio-item__image" src="{{ MEDIA_URL }}{{ item.image }}" alt="{{ item.name }}" loading="lazy" />
+          <img class="portfolio-item__image" 
+            src="{{ MEDIA_URL }}{{ item.image }}" 
+            alt="{{ item.name }}" 
+            loading="{% if forloop.first %}eager{% else %}lazy{% endif %}" 
+          />
         {% endif %}
         <h3 class="portfolio-item__name">
           <span>

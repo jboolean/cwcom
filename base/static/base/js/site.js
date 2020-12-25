@@ -71,9 +71,12 @@ var bindPortfolio = function() {
 			el.classList.remove(activeClassName);
 
 			if (i === index) {
+				// Lazy load by setting src,srcset attributes
 				const imgEl = el.querySelector('img');
-				if (!imgEl.getAttribute('src'))
+				if (!imgEl.getAttribute('src')){
+					imgEl.setAttribute('srcset', imgEl.getAttribute('data-srcset'));
 					imgEl.setAttribute('src', imgEl.getAttribute('data-src'));
+				}
 				el.classList.add(activeClassName);
 			}
 		}

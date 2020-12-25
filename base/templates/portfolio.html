@@ -22,6 +22,7 @@
             srcset="{{ item.image | srcset}}"
             {% endif %}
             data-src="{{ MEDIA_URL }}{{ item.image }}?width=full" 
+            data-srcset="{{ item.image | srcset}}"
             alt="{{ item.name }}" 
           />
         {% if item.has_url %}

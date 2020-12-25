@@ -67,10 +67,14 @@ var bindPortfolio = function() {
 
 	var showItem = function(index) {
 		for (i = 0; i < elements.items.length; i++) {
-			elements.items[i].classList.remove(activeClassName);
+			const el = elements.items[i];
+			el.classList.remove(activeClassName);
 
 			if (i === index) {
-				elements.items[i].classList.add(activeClassName);
+				const imgEl = el.querySelector('img');
+				if (!imgEl.getAttribute('src'))
+					imgEl.setAttribute('src', imgEl.getAttribute('data-src'));
+				el.classList.add(activeClassName);
 			}
 		}
 	}

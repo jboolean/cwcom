@@ -10,21 +10,19 @@
   <div class="section__content">
     <div class="items">
     {% for item in portfolio.portfolioimage_set.all %}
-      <div class="portfolio-item" id="{{ item.name }}">
+      <div class="portfolio-item{% if forloop.first %} portfolio-item--show{% endif %}" id="{{ item.name }}">
         {% if item.has_url %}
         <a href="{{ item.url }}">
+        {% endif %}
           <img class="portfolio-item__image" 
-            src="{{ MEDIA_URL }}{{ item.image }}" 
+            {% if forloop.first %}
+            src="{{ MEDIA_URL }}{{ item.image }}?width=full"
+            {% endif %}
+            data-src="{{ MEDIA_URL }}{{ item.image }}?width=full" 
             alt="{{ item.name }}" 
-            loading="{% if forloop.first %}eager{% else %}lazy{% endif %}" 
           />
+        {% if item.has_url %}
         </a>
-        {% else %}
-          <img class="portfolio-item__image" 
-            src="{{ MEDIA_URL }}{{ item.image }}" 
-            alt="{{ item.name }}" 
-            loading="{% if forloop.first %}eager{% else %}lazy{% endif %}" 
-          />
         {% endif %}
         <h3 class="portfolio-item__name">
           <span>

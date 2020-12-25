@@ -10,7 +10,7 @@
     "collectstatic:prod": "./bin/django-prod collectstatic --no-input",
     "migrate:prod": "serverless wsgi manage -c migrate",
     "deploy:prod": "npm run buildout && serverless deploy && npm run collectstatic:prod && npm run migrate:prod",
-    "logs": "serverless logs -f app -t"
+    "logs": "serverless logs -f app -t --startTime 1m"
   },
   "repository": {
     "type": "git",

@@ -7,7 +7,7 @@
 			<div class="item item--text" id="{{ talk.slug }}">
 				{% if talk.primary_image %}
 				<a href="{{ talk.link }}" target="_blank">
-					<img class="item__image" src="{{ MEDIA_URL }}{{ talk.primary_image.image }}" alt="{{ item.name }}" loading="lazy" />
+					<img class="item__image" src="{{ MEDIA_URL }}{{ talk.primary_image.image }}?width=full" alt="{{ item.name }}" loading="lazy" />
 				</a>
 				{% endif %}
 

@@ -12,7 +12,7 @@
 	<div class="section__content">
 		<div class="item item--detail" id="{{ project.slug }}">
 			{% if project.primary_image %}
-			<img class="item__primary-image" src="{{ MEDIA_URL }}{{ project.primary_image.image }}" alt="{{ project.name }}" />
+			<img class="item__primary-image" src="{{ MEDIA_URL }}{{ project.primary_image.image }}?width=full" alt="{{ project.name }}" loading="lazy" />
 			{% endif %}
 
 			{% if project.info %}
@@ -69,7 +69,7 @@
 			{% for item in project.projectimage_set.all %}
 			{% if not item.is_primary %}
 				<div class="gallery__item">
-					<img class="gallery__image" src="{{ MEDIA_URL }}{{ item.image }}" alt="{{ project.name }}" />
+					<img class="gallery__image" src="{{ MEDIA_URL }}{{ item.image }}?width=full" alt="{{ project.name }}" loading="lazy" />
 				</div>
 			{% endif %}
 			{% endfor %}

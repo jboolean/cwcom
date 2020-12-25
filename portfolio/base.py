@@ -48,7 +48,9 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.cache.UpdateCacheMiddleware',
     'django.middleware.common.CommonMiddleware',
+    'django.middleware.cache.FetchFromCacheMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
@@ -130,10 +132,8 @@ STATIC_URL = '/static/'
 
 
 # TinyMCE
-TINYMCE_JS_URL = 'https://cdnjs.cloudflare.com/ajax/libs/tinymce/5.6.2/tinymce.min.js'
 TINYMCE_DEFAULT_CONFIG = {
-    'plugins': 'spellchecker,paste',
-    # 'theme': 'advanced',
+    'plugins': 'spellchecker,paste,link',
     'cleanup_on_startup': True,
     'custom_undo_redo_levels': 10,
 }

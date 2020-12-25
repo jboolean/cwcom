@@ -412,15 +412,14 @@ body {
   .portfolio-item.portfolio-item--show {
     opacity: 1; }
   .portfolio-item img {
-    height: auto;
     width: 100%;
     object-fit: contain;
-    max-height: 40vh; }
+    height: 40vh; }
     @media (min-width: 768px) {
       .portfolio-item img {
         height: 90%;
         width: auto;
-        max-height: 90%; } }
+        height: 90%; } }
 
 .portfolio-item__name {
   margin: 1rem auto 0;

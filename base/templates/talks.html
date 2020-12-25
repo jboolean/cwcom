@@ -1,3 +1,4 @@
+{% load image_tags %}
 {% if talks %}
 <section class="section section--talks" id="talks">
 	<h2 class="section__header">MEDIA <a href="#talks"><i class="fa fa-chain fa-chain-big"></i></a></h2>
@@ -7,7 +8,14 @@
 			<div class="item item--text" id="{{ talk.slug }}">
 				{% if talk.primary_image %}
 				<a href="{{ talk.link }}" target="_blank">
-					<img class="item__image" src="{{ MEDIA_URL }}{{ talk.primary_image.image }}?width=full" alt="{{ item.name }}" loading="lazy" />
+					<img 
+					class="item__image" 
+					src="{{ MEDIA_URL }}{{ talk.primary_image.image }}?width=full" 
+					srcset="{{ talk.primary_image.image | srcset}}"
+					sizes="(min-width: 1140px) 514px"
+					alt="{{ item.name }}" 
+					loading="lazy" 
+				/>
 				</a>
 				{% endif %}
 

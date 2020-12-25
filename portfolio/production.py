@@ -38,7 +38,7 @@ AWS_QUERYSTRING_AUTH = False
 
 SITE_URL = 'https://carolinewoolard.com'
 
-# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-AWS_S3_CUSTOM_DOMAIN = 'static.carolinewoolard.com'
+AWS_S3_CUSTOM_DOMAIN = 'media.carolinewoolard.com'
+AWS_STATIC_CUSTOM_DOMAIN = 'static.carolinewoolard.com'
 STATIC_URL = 'https://static.carolinewoolard.com/'
 MEDIA_URL = 'https://media.carolinewoolard.com/'

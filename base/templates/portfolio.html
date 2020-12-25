@@ -6,6 +6,8 @@
 
 {% block content %}
 
+{% load image_tags %}
+
 <section class="section section--portolio" id="portfolio">
   <div class="section__content">
     <div class="items">
@@ -17,6 +19,7 @@
           <img class="portfolio-item__image" 
             {% if forloop.first %}
             src="{{ MEDIA_URL }}{{ item.image }}?width=full"
+            srcset="{{ item.image | srcset}}"
             {% endif %}
             data-src="{{ MEDIA_URL }}{{ item.image }}?width=full" 
             alt="{{ item.name }}" 

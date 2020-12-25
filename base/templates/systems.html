@@ -1,4 +1,6 @@
 {% if systems %}
+{% load image_tags %}
+
 <section class="section section--systems" id="systems">
 	<h2 class="section__header">SYSTEMS <a href="#systems"><i class="fa fa-chain fa-chain-big"></i></a></h2>
 	<div class="section__content">
@@ -6,7 +8,13 @@
 		{% for system in systems %}
 			<div class="item" id="{{ system.slug }}">
 				<a href="{% url 'base:system-detail' slug=system.slug %}">
-					<img class="item__image" src="{{ MEDIA_URL }}{{ system.primary_image.image }}?width=full" alt="{{ system.name }}" loading="lazy" />
+					<img class="item__image"
+						src="{{ MEDIA_URL }}{{ system.primary_image.image }}?width=full"
+						srcset="{{ system.primary_image.image | srcset}}"
+						sizes="(min-width: 1140px) 350px"
+						alt="{{ system.name }}" 
+						loading="lazy" 
+					/>
 				</a>
 				<h3 class="item__name">
 					<a href="{% url 'base:system-detail' slug=system.slug %}">

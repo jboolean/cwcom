@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
 {% load static %}
+{% load image_tags %}
 
 {% block navigation %}
 {% include 'navigation.html' %}
@@ -12,7 +13,13 @@
 	<div class="section__content">
 		<div class="item item--detail" id="{{ system.slug }}">
 			{% if system.primary_image %}
-			<img class="item__primary-image" src="{{ MEDIA_URL }}{{ system.primary_image.image }}?width=full" alt="{{ system.name }}" loading="lazy" />
+			<img 
+				class="item__primary-image" 
+				src="{{ MEDIA_URL }}{{ system.primary_image.image }}?width=full" 
+				srcset="{{ system.primary_image.image | srcset}}"
+				alt="{{ system.name }}" 
+				loading="lazy"
+			/>
 			{% endif %}
 
 			{% if system.info %}
@@ -69,7 +76,13 @@
 			{% for item in system.systemimage_set.all %}
 			{% if not item.is_primary %}
 				<div class="gallery__item">
-					<img class="gallery__image" src="{{ MEDIA_URL }}{{ item.image }}?width=full" alt="{{ system.name }}" loading="lazy" />
+					<img 
+						class="gallery__image" 
+						src="{{ MEDIA_URL }}{{ item.image }}?width=full" 
+						srcset="{{ item.image | srcset}}"
+						alt="{{ system.name }}" 
+						loading="lazy" 
+					/>
 				</div>
 			{% endif %}
 			{% endfor %}

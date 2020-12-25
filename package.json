@@ -9,7 +9,8 @@
     "buildout": "./bin/buildout -N",
     "collectstatic:prod": "./bin/django-prod collectstatic --no-input",
     "migrate:prod": "serverless wsgi manage -c migrate",
-    "deploy:prod": "npm run buildout && serverless deploy && npm run collectstatic:prod && npm run migrate:prod",
+    "clearcache:prod": "serverless wsgi manage -c clearcache",
+    "deploy:prod": "npm run buildout && serverless deploy && npm run collectstatic:prod && npm run migrate:prod && npm run clearcache:prod",
     "logs": "serverless logs -f app -t --startTime 1m"
   },
   "repository": {

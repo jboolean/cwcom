@@ -5,6 +5,7 @@
 {% block navigation %}
 {% include 'navigation.html' %}
 {% endblock navigation %}
+{% load image_tags %}
 
 {% block content %}
 <section class="section section--detail section--{{project.slug}}">
@@ -12,7 +13,13 @@
 	<div class="section__content">
 		<div class="item item--detail" id="{{ project.slug }}">
 			{% if project.primary_image %}
-			<img class="item__primary-image" src="{{ MEDIA_URL }}{{ project.primary_image.image }}?width=full" alt="{{ project.name }}" loading="lazy" />
+			<img 
+				class="item__primary-image" 
+				src="{{ MEDIA_URL }}{{ project.primary_image.image }}?width=full" 
+				srcset="{{ project.primary_image.image | srcset}}"
+				alt="{{ project.name }}" 
+				loading="lazy" 
+			/>
 			{% endif %}
 
 			{% if project.info %}
@@ -69,7 +76,13 @@
 			{% for item in project.projectimage_set.all %}
 			{% if not item.is_primary %}
 				<div class="gallery__item">
-					<img class="gallery__image" src="{{ MEDIA_URL }}{{ item.image }}?width=full" alt="{{ project.name }}" loading="lazy" />
+					<img 
+						class="gallery__image" 
+						src="{{ MEDIA_URL }}{{ item.image }}?width=full" 
+						srcset="{{ item.image | srcset}}"
+						alt="{{ project.name }}" 
+						loading="lazy" 
+					/>
 				</div>
 			{% endif %}
 			{% endfor %}

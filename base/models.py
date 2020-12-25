@@ -5,6 +5,10 @@ from django.utils.html import format_html
 from tinymce.models import HTMLField
 from django.urls import reverse
 
+from django.db.models.signals import post_save, post_delete
+from django.core.cache import cache
+from django.dispatch import receiver
+
 
 
 class Base(Model):
@@ -185,3 +189,7 @@ class PortfolioImage(BaseImage):
             return reverse('base:system-detail', kwargs={'slug':self.system.slug})
 
         return None
+
+@receiver([post_save, post_delete])
+def clear_the_cache(**kwargs):
+    cache.clear()

@@ -5,13 +5,17 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "bootstrap": "python bootstrap.py",
+    "bootstrap": "pip install zc.buildout && buildout bootstrap",
     "buildout": "./bin/buildout -N",
     "collectstatic:prod": "./bin/django-prod collectstatic --no-input",
+    "manage:dev": "./bin/django",
     "migrate:prod": "serverless wsgi manage -c migrate",
+    "migrate:dev": "npm run manage:dev migrate",
     "clearcache:prod": "serverless wsgi manage -c clearcache",
+    "clearcache:dev": "npm run manage:dev clearcache",
     "deploy:prod": "npm run buildout && serverless deploy && npm run collectstatic:prod && npm run migrate:prod && npm run clearcache:prod",
-    "logs": "serverless logs -f app -t --startTime 1m"
+    "logs": "serverless logs -f app -t --startTime 1m",
+    "start": "./bin/django runserver"
   },
   "repository": {
     "type": "git",

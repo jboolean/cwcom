@@ -14,6 +14,7 @@
     "clearcache:prod": "serverless wsgi manage -c clearcache",
     "clearcache:dev": "npm run manage:dev clearcache",
     "deploy:prod": "npm run buildout && serverless deploy && npm run collectstatic:prod && npm run migrate:prod && npm run clearcache:prod",
+    "deploy:dry": "npm run buildout && serverless package",
     "logs": "serverless logs -f app -t --startTime 1m",
     "start": "./bin/django runserver"
   },
@@ -33,5 +34,6 @@
     "serverless-python-requirements": "^5.1.0",
     "serverless-secrets-plugin": "^0.1.0",
     "serverless-wsgi": "^1.7.6"
-  }
+  },
+  "dependencies": {}
 }

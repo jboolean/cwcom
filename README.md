@@ -3,14 +3,16 @@
 ## Install dependencies
 
 ```
-python bootstrap
-./bin/buildout
+nvm use
+npm install
+npm run bootstrap
+npm run buildout
 ```
 
 ## Run dev server
 
 ```
-./bin/django runserver
+npm run start
 ```
 
 ## Deployment

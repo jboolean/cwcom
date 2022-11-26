@@ -50,6 +50,7 @@ custom:
     app: portfolio.wsgi.application
   pythonRequirements:
     dockerizePip: true
+    poetry: true
   apigwBinary:
     types:
       - 'multipart/form-data'

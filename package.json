@@ -8,12 +8,16 @@
     "bootstrap": "pip install zc.buildout && buildout bootstrap",
     "buildout": "./bin/buildout -N",
     "collectstatic:prod": "./bin/django-prod collectstatic --no-input",
+    "collectstatic:staging": "./bin/django-staging collectstatic --no-input",
     "manage:dev": "./bin/django",
-    "migrate:prod": "serverless wsgi manage -c migrate",
+    "migrate:prod": "serverless --stage production wsgi manage -c migrate",
+    "migrate:staging": "serverless --stage staging wsgi manage -c migrate",
     "migrate:dev": "npm run manage:dev migrate",
     "clearcache:prod": "serverless wsgi manage -c clearcache",
+    "clearcache:staging": "serverless --stage staging wsgi manage -c clearcache",
     "clearcache:dev": "npm run manage:dev clearcache",
-    "deploy:prod": "npm run buildout && serverless deploy && npm run collectstatic:prod && npm run migrate:prod && npm run clearcache:prod",
+    "deploy:prod": "npm run buildout && serverless deploy --stage production && npm run collectstatic:prod && npm run migrate:prod && npm run clearcache:prod",
+    "deploy:staging": "npm run buildout && SLS_DEBUG=* serverless deploy --stage staging && npm run collectstatic:staging && npm run migrate:staging && npm run clearcache:staging",
     "deploy:dry": "npm run buildout && serverless package",
     "logs": "serverless logs -f app -t --startTime 1m",
     "start": "./bin/django runserver"
@@ -33,7 +37,7 @@
     "serverless-domain-manager": "^5.1.0",
     "serverless-python-requirements": "^5.1.0",
     "serverless-secrets-plugin": "^0.1.0",
-    "serverless-wsgi": "^1.7.6"
+    "serverless-wsgi": "^2.0.0"
   },
   "dependencies": {}
 }

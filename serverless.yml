@@ -9,6 +9,10 @@ provider:
       Action:
       - s3:*
       Resource: arn:aws:s3:::cw-media-production/*
+    - Effect: Allow
+      Action:
+      - s3:*
+      Resource: arn:aws:s3:::cw-media-staging-01/*
   # Tags for billing tracking
   stackTags:
    Client: woolard
@@ -49,8 +53,11 @@ custom:
   apigwBinary:
     types:
       - 'multipart/form-data'
+  domain:
+    production: carolinewoolard.com
+    staging: staging.carolinewoolard.com
   customDomain:
-    domainName: carolinewoolard.com
+    domainName: ${self:custom.domain.${opt:stage}}
     basePath: ''
-    stage: ${self:provider.stage}
+    stage: ${opt:stage}
     createRoute53Record: true

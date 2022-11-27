@@ -3,7 +3,6 @@ service: cwcom
 provider:
   name: aws
   runtime: python3.7
-  stage: production
   iamRoleStatements:
     - Effect: Allow
       Action:
@@ -21,18 +20,21 @@ provider:
 plugins:
  - serverless-wsgi
  - serverless-python-requirements
- - serverless-secrets-plugin
  - serverless-apigw-binary
  - serverless-domain-manager
 
 functions:
   app:
-      handler: wsgi_handler.handler
-      events:
-        - http: ANY /
-        - http: ANY {proxy+}
-      environment: ${file(secrets.${opt:stage, self:provider.stage}.yml)}
-
+    handler: wsgi_handler.handler
+    events:
+      - http: ANY /
+      - http: ANY /{proxy+}
+    environment:
+      DB_HOST: ${ssm:/${self:service}-${sls:stage}-db-host}
+      DB_PORT: ${ssm:/${self:service}-${sls:stage}-db-port}
+      DB_USERNAME: ${ssm:/${self:service}-${sls:stage}-db-username}
+      DB_PASSWORD: ${ssm:/${self:service}-${sls:stage}-db-password}
+      DB_DATABASE: ${ssm:/${self:service}-${sls:stage}-db-database}
 
 package:
  exclude:
@@ -58,7 +60,7 @@ custom:
     production: carolinewoolard.com
     staging: staging.carolinewoolard.com
   customDomain:
-    domainName: ${self:custom.domain.${opt:stage}}
+    domainName: ${self:custom.domain.${sls:stage}}
     basePath: ''
-    stage: ${opt:stage}
+    stage: ${sls:stage}
     createRoute53Record: true

@@ -11,11 +11,11 @@
     "manage:dev": "DJANGO_SETTINGS_MODULE='portfolio.dev' poetry run django-admin",
     "manage:prod": "DJANGO_SETTINGS_MODULE='portfolio.production' poetry run django-admin",
     "manage:staging": "DJANGO_SETTINGS_MODULE='portfolio.staging' poetry run django-admin",
-    "migrate:prod": "serverless --stage production wsgi manage -c migrate",
-    "migrate:staging": "serverless --stage staging wsgi manage -c migrate",
+    "migrate:prod": "serverless wsgi manage --command migrate --stage production",
+    "migrate:staging": "serverless wsgi manage --command migrate --stage staging",
     "migrate:dev": "npm run manage:dev migrate",
-    "clearcache:prod": "serverless wsgi manage -c clearcache",
-    "clearcache:staging": "serverless --stage staging wsgi manage -c clearcache",
+    "clearcache:prod": "serverless wsgi manage --command clearcache --stage production",
+    "clearcache:staging": "serverless wsgi manage --command clearcache --stage staging",
     "clearcache:dev": "npm run manage:dev clearcache",
     "deploy:prod": "serverless deploy --stage production && npm run collectstatic:prod && npm run migrate:prod && npm run clearcache:prod",
     "deploy:staging": "SLS_DEBUG=* serverless deploy --stage staging && npm run collectstatic:staging && npm run migrate:staging && npm run clearcache:staging",
@@ -34,12 +34,11 @@
   },
   "homepage": "https://github.com/jboolean/cwcom#readme",
   "devDependencies": {
-    "serverless": "^1.83.3",
+    "serverless": "^3.25.0",
     "serverless-apigw-binary": "^0.4.4",
-    "serverless-domain-manager": "^5.1.0",
-    "serverless-python-requirements": "^5.1.0",
-    "serverless-secrets-plugin": "^0.1.0",
-    "serverless-wsgi": "^2.0.0"
+    "serverless-domain-manager": "^6.2.0",
+    "serverless-python-requirements": "^6.0.0",
+    "serverless-wsgi": "^3.0.1"
   },
   "dependencies": {}
 }

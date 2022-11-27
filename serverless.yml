@@ -3,12 +3,15 @@ service: cwcom
 provider:
   name: aws
   runtime: python3.7
-  stage: production
   iamRoleStatements:
     - Effect: Allow
       Action:
       - s3:*
       Resource: arn:aws:s3:::cw-media-production/*
+    - Effect: Allow
+      Action:
+      - s3:*
+      Resource: arn:aws:s3:::cw-media-staging-01/*
   # Tags for billing tracking
   stackTags:
    Client: woolard
@@ -17,18 +20,21 @@ provider:
 plugins:
  - serverless-wsgi
  - serverless-python-requirements
- - serverless-secrets-plugin
  - serverless-apigw-binary
  - serverless-domain-manager
 
 functions:
   app:
-      handler: wsgi_handler.handler
-      events:
-        - http: ANY /
-        - http: ANY {proxy+}
-      environment: ${file(secrets.${opt:stage, self:provider.stage}.yml)}
-
+    handler: wsgi_handler.handler
+    events:
+      - http: ANY /
+      - http: ANY /{proxy+}
+    environment:
+      DB_HOST: ${ssm:/${self:service}-${sls:stage}-db-host}
+      DB_PORT: ${ssm:/${self:service}-${sls:stage}-db-port}
+      DB_USERNAME: ${ssm:/${self:service}-${sls:stage}-db-username}
+      DB_PASSWORD: ${ssm:/${self:service}-${sls:stage}-db-password}
+      DB_DATABASE: ${ssm:/${self:service}-${sls:stage}-db-database}
 
 package:
  exclude:
@@ -45,12 +51,16 @@ custom:
     pythonBin: python3
     app: portfolio.wsgi.application
   pythonRequirements:
-    dockerizePip: true
+    dockerizePip: 'non-linux'
+    poetry: true
   apigwBinary:
     types:
       - 'multipart/form-data'
+  domain:
+    production: carolinewoolard.com
+    staging: staging.carolinewoolard.com
   customDomain:
-    domainName: carolinewoolard.com
+    domainName: ${self:custom.domain.${sls:stage}}
     basePath: ''
-    stage: ${self:provider.stage}
+    stage: ${sls:stage}
     createRoute53Record: true

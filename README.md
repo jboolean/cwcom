@@ -2,15 +2,41 @@
 
 ## Install dependencies
 
+### System dependencies
+[Install `poetry`](https://python-poetry.org/docs/#installation), a python dependency manager, globally.
+
+
+On Mac:
+
+```shell
+brew install poetry
 ```
-python bootstrap
-./bin/buildout
+
+and also Docker, which is used to package dependencies in a lambda-like virtual environment
+
+```
+brew install docker
+```
+
+Docker must be running to package for deploys.
+
+### JS dependencies
+
+```
+nvm use
+npm install
+```
+
+### Python dependencies:
+
+```
+poetry install
 ```
 
 ## Run dev server
 
 ```
-./bin/django runserver
+npm run start
 ```
 
 ## Deployment

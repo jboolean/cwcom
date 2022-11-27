@@ -5,13 +5,23 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "bootstrap": "python bootstrap.py",
-    "buildout": "./bin/buildout -N",
-    "collectstatic:prod": "./bin/django-prod collectstatic --no-input",
-    "migrate:prod": "serverless wsgi manage -c migrate",
-    "clearcache:prod": "serverless wsgi manage -c clearcache",
-    "deploy:prod": "npm run buildout && serverless deploy && npm run collectstatic:prod && npm run migrate:prod && npm run clearcache:prod",
-    "logs": "serverless logs -f app -t --startTime 1m"
+    "bootstrap": "poetry install",
+    "collectstatic:prod": "npm run manage:prod -- collectstatic --no-input",
+    "collectstatic:staging": "npm run manage:staging -- collectstatic --no-input",
+    "manage:dev": "DJANGO_SETTINGS_MODULE='portfolio.dev' poetry run django-admin",
+    "manage:prod": "DJANGO_SETTINGS_MODULE='portfolio.production' poetry run django-admin",
+    "manage:staging": "DJANGO_SETTINGS_MODULE='portfolio.staging' poetry run django-admin",
+    "migrate:prod": "serverless wsgi manage --command migrate --stage production",
+    "migrate:staging": "serverless wsgi manage --command migrate --stage staging",
+    "migrate:dev": "npm run manage:dev migrate",
+    "clearcache:prod": "serverless wsgi manage --command clearcache --stage production",
+    "clearcache:staging": "serverless wsgi manage --command clearcache --stage staging",
+    "clearcache:dev": "npm run manage:dev clearcache",
+    "deploy:prod": "serverless deploy --stage production && npm run collectstatic:prod && npm run migrate:prod && npm run clearcache:prod",
+    "deploy:staging": "SLS_DEBUG=* serverless deploy --stage staging && npm run collectstatic:staging && npm run migrate:staging && npm run clearcache:staging",
+    "deploy:dry": "serverless package --stage staging && npm run collectstatic:staging -- --dry-run",
+    "logs": "serverless logs -f app -t --startTime 1m",
+    "start": "poetry run django-admin runserver --settings 'portfolio.dev'"
   },
   "repository": {
     "type": "git",
@@ -24,10 +34,11 @@
   },
   "homepage": "https://github.com/jboolean/cwcom#readme",
   "devDependencies": {
+    "serverless": "^3.25.0",
     "serverless-apigw-binary": "^0.4.4",
-    "serverless-domain-manager": "^5.1.0",
-    "serverless-python-requirements": "^5.1.0",
-    "serverless-secrets-plugin": "^0.1.0",
-    "serverless-wsgi": "^1.7.6"
-  }
+    "serverless-domain-manager": "^6.2.0",
+    "serverless-python-requirements": "^6.0.0",
+    "serverless-wsgi": "^3.0.1"
+  },
+  "dependencies": {}
 }

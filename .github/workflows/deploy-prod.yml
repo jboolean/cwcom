@@ -25,4 +25,6 @@ jobs:
       - run: npm ci
       - run: poetry install
       - name: Deploy staging
+        run: npm run deploy:staging
+      - name: Deploy production
         run: npm run deploy:prod

@@ -51,7 +51,7 @@ custom:
     pythonBin: python3
     app: portfolio.wsgi.application
   pythonRequirements:
-    dockerizePip: true
+    dockerizePip: 'non-linux'
     poetry: true
   apigwBinary:
     types:

@@ -1,0 +1,37 @@
+version: 2
+updates:
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "saturday"
+      time: "09:00"
+      timezone: "America/New_York"
+    assignees:
+      - "jboolean"
+    # Ignore patch updates
+    ignore:
+      - dependency-name: '*'
+        update-types: ['version-update:semver-patch']
+  - package-ecosystem: "pip"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "saturday"
+      time: "09:00"
+      timezone: "America/New_York"
+    assignees:
+      - "jboolean"
+    # Ignore patch updates
+    ignore:
+      - dependency-name: '*'
+        update-types: ['version-update:semver-patch']
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "saturday"
+      time: "09:00"
+      timezone: "America/New_York"
+    assignees:
+      - "jboolean"

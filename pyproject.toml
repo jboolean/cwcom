@@ -9,7 +9,7 @@ packages = [
 ]
 
 [tool.poetry.dependencies]
-python = "~3.7"
+python = "~3.9"
 django = "^3.2.16"
 Pillow = "^8.4.0"
 django-tinymce = "^3.2.0"

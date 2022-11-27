@@ -9,7 +9,7 @@ defaults:
   run:
     shell: bash
 jobs:
-  dry-deploy:
+  deploy-dry:
     runs-on: ubuntu-latest
     env:
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID}}

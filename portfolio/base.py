@@ -139,3 +139,4 @@ TINYMCE_DEFAULT_CONFIG = {
     'custom_undo_redo_levels': 10,
 }
 
+DEFAULT_AUTO_FIELD = "django.db.models.AutoField"

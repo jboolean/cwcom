@@ -20,7 +20,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - uses: actions/setup-python@v4
+      - uses: actions/setup-python@v5
       - uses: abatilo/actions-poetry@v3
       - run: npm ci
       - run: poetry install --sync

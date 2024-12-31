@@ -134,9 +134,10 @@ STATIC_URL = '/static/'
 
 # TinyMCE
 TINYMCE_DEFAULT_CONFIG = {
-    'plugins': 'spellchecker,paste,link',
+    'plugins': 'paste,link',
     'cleanup_on_startup': True,
     'custom_undo_redo_levels': 10,
+    'browser_spellcheck': True,
 }
 
 DEFAULT_AUTO_FIELD = "django.db.models.AutoField"

@@ -42,3 +42,5 @@ AWS_S3_CUSTOM_DOMAIN = 'media.staging.carolinewoolard.com'
 AWS_STATIC_CUSTOM_DOMAIN = 'static.staging.carolinewoolard.com'
 STATIC_URL = 'https://static.staging.carolinewoolard.com/'
 MEDIA_URL = 'https://media.staging.carolinewoolard.com/'
+
+STATIC_ROOT = '/tmp/staticfiles'

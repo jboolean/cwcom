@@ -138,6 +138,7 @@ TINYMCE_DEFAULT_CONFIG = {
     'cleanup_on_startup': True,
     'custom_undo_redo_levels': 10,
     'browser_spellcheck': True,
+    'promotion': False,
 }
 
 DEFAULT_AUTO_FIELD = "django.db.models.AutoField"

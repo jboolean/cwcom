@@ -26,6 +26,7 @@ plugins:
 functions:
   app:
     handler: wsgi_handler.handler
+    ephemeralStorageSize: 1024
     events:
       - http: ANY /
       - http: ANY /{proxy+}

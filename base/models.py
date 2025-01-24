@@ -4,6 +4,8 @@ from django.db.models import *
 from django.utils.html import format_html
 from tinymce.models import HTMLField
 from django.urls import reverse
+from s3direct.fields import S3DirectField
+
 
 from django.db.models.signals import post_save, post_delete
 from django.core.cache import cache

@@ -15,6 +15,7 @@ from .models import (
     Text,
     Event
 )
+from django.conf import settings
 
 
 class PortfolioImageInline(admin.TabularInline):
@@ -51,6 +52,11 @@ class TalkImageInline(admin.TabularInline):
     fields = ('image', 'image_tag', 'order', 'is_primary')
     readonly_fields = ('image_tag',)
     extra = 1
+
+    if hasattr(settings, 'S3DIRECT_DESTINATIONS'):
+        formfield_overrides = {
+            S3DirectField: {'widget': S3DirectWidget(dest='images')},
+        }
 
 
 class ContentBlockAdmin(admin.ModelAdmin):

@@ -44,3 +44,12 @@ STATIC_URL = 'https://static.staging.carolinewoolard.com/'
 MEDIA_URL = 'https://media.staging.carolinewoolard.com/'
 
 STATIC_ROOT = '/tmp/staticfiles'
+
+# s3-direct
+INSTALLED_APPS += ['s3direct']
+S3DIRECT_DESTINATIONS = {
+    'images': {
+        'key': '/images',
+        'bucket': AWS_STORAGE_BUCKET_NAME, 
+    },
+}

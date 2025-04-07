@@ -25,49 +25,6 @@
 						<i class="fa fa-chain"></i>
 					</a>
 				</h3>
-
-				{% if project.info %}
-				<div class="item__meta">
-					<span class="item__key">Info: </span>
-					<span class="item__value">{{ project.info }}</span>
-				</div>
-				{% endif %}
-
-				{% if project.system %}
-				<div class="item__meta">
-					<span class="item__key">System: </span>
-					<span class="item__value"><a href="#{{ project.system.slug }}">{{ project.system.name }}</a></span>
-				</div>
-				{% endif %}
-
-				{% if project.texts.all %}
-				<div class="item__meta">
-					<span class="item__key">Texts: </span>
-					<span class="item__value">
-					{% for text in project.texts.all %}
-						<a class="item__text" href="{{ MEDIA_URL }}{{ text.pdf }}">{{text.name}}</a>{% if forloop.last %}{% else %}, {% endif %}
-					{% endfor %}
-					</span>
-				</div>
-				{% endif %}
-
-				{% if project.talks.all %}
-				<div class="item__meta">
-					<span class="item__key">Media: </span>
-					<span class="item__value">
-					{% for talk in project.talks.all %}
-						<a class="item__talk" href="#{{talk.slug}}">{{talk.name}}</a>{% if forloop.last %}{% else %}, {% endif %}
-					{% endfor %}
-					</span>
-				</div>
-				{% endif %}
-
-				{% if project.press %}
-				<div class="item__meta">
-					<span class="item__key">Press: </span>
-					<span class="item__value">{{project.press|safe}}</span>
-				</div>
-				{% endif %}
 			</div>
 		{% if forloop.counter|divisibleby:"3" %}
 		</div>

@@ -18,7 +18,7 @@ jobs:
         with:
           node-version: '22'
       - uses: actions/setup-python@v5
-      - uses: abatilo/actions-poetry@v3
+      - uses: abatilo/actions-poetry@v4
       - run: npm ci
       - run: poetry install --sync
       - name: Deploy staging

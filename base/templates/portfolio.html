@@ -8,43 +8,10 @@
 
 {% load image_tags %}
 
-<section class="section section--portolio" id="portfolio">
-  <div class="section__content">
-    <div class="items">
-    {% for item in portfolio.portfolioimage_set.all %}
-      <div class="portfolio-item{% if forloop.first %} portfolio-item--show{% endif %}" id="{{ item.name }}">
-        {% if item.has_url %}
-        <a href="{{ item.url }}">
-        {% endif %}
-          <img class="portfolio-item__image" 
-            {% if forloop.first %}
-            src="{{ MEDIA_URL }}{{ item.image }}?width=full"
-            srcset="{{ item.image | srcset}}"
-            {% endif %}
-            data-src="{{ MEDIA_URL }}{{ item.image }}?width=full" 
-            data-srcset="{{ item.image | srcset}}"
-            alt="{{ item.name }}" 
-          />
-        {% if item.has_url %}
-        </a>
-        {% endif %}
-        <h3 class="portfolio-item__name">
-          <span>
-            {{ item.name }}
-          </span>
-          {{ item.caption }}
-        </h3>
-      </div>
-    {% endfor %}
-    </div>
-    <div class="portfolio-controls">
-      <a class="previous">&larr;</a>
-      <a class="next">&rarr;</a>
-    </div>
-  </div>
-</section>
 
 {% include 'intro.html' %}
+
+{% include 'portfolio-carousel.html' %}
 
 <!-- PROJECTS -->
 {% include 'projects.html' %}

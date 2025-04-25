@@ -1,3 +1,4 @@
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 from .base import *
 import os
 
@@ -28,7 +29,6 @@ CACHES = {
 
 CACHE_MIDDLEWARE_SECONDS = 7 * 24 * 60 * 60
 
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 STATICFILES_STORAGE = 'base.storages.S3StaticStorage'
 AWS_STORAGE_BUCKET_NAME = 'cw-media-staging-01'
 AWS_STATIC_BUCKET_NAME = 'cw-static-staging-01'

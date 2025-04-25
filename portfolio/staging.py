@@ -30,7 +30,7 @@ CACHE_MIDDLEWARE_SECONDS = 7 * 24 * 60 * 60
 
 STORAGES = {
     "default": {
-        "BACKEND": "storages.backends.s3boto3.S3Boto3Storage",
+        "BACKEND": "storages.backends.s3.S3Storage",
         "OPTIONS": {
             "bucket_name": "cw-media-staging-01",
             "custom_domain": "media.staging.carolinewoolard.com",
@@ -39,7 +39,7 @@ STORAGES = {
         }
     },
     "staticfiles": {
-        "BACKEND": "base.storages.S3StaticStorage",
+        "BACKEND": "storages.backends.s3.S3Storage",
         "OPTIONS": {
             "bucket_name": "cw-static-staging-01",
             "custom_domain": "static.staging.carolinewoolard.com",

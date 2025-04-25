@@ -43,6 +43,7 @@ STORAGES = {
         "OPTIONS": {
             "bucket_name": "cw-static-staging-01",
             "custom_domain": "static-staging.carolinewoolard.com",
+            "default_acl": "public-read",
         }
     },
 }

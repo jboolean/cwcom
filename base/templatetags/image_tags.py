@@ -7,6 +7,6 @@ register = template.Library()
 WIDTHS = [350, 700, 1366, 1600, 1920]
 
 @register.filter
-def srcset(file):
-    url = file.url
+def srcset(file_or_url):
+    url = file_or_url if isinstance(file_or_url, str) else file_or_url.url
     return ', '.join(list(map(lambda w: '%s?width=%d %dw' % (url, w, w), WIDTHS)) + [url+'?width=full'])

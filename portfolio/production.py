@@ -28,18 +28,28 @@ CACHES = {
 
 CACHE_MIDDLEWARE_SECONDS = 7 * 24 * 60 * 60
 
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-STATICFILES_STORAGE = 'base.storages.S3StaticStorage'
-AWS_STORAGE_BUCKET_NAME = 'cw-media-production'
-AWS_STATIC_BUCKET_NAME = 'cw-static-production-01'
-AWS_DEFAULT_ACL = 'public-read'
-AWS_QUERYSTRING_AUTH = False
-
+STORAGES = {
+    "default": {
+        "BACKEND": "storages.backends.s3.S3Storage",
+        "OPTIONS": {
+            "bucket_name": "cw-media-production",
+            "custom_domain": "media.carolinewoolard.com",
+            "default_acl": "public-read",
+            "querystring_auth": False,
+        }
+    },
+    "staticfiles": {
+        "BACKEND": "storages.backends.s3.S3Storage",
+        "OPTIONS": {
+            "bucket_name": "cw-static-production-01",
+            "custom_domain": "static.carolinewoolard.com",
+            "default_acl": "public-read",
+        }
+    },
+}
 
 SITE_URL = 'https://carolinewoolard.com'
 
-AWS_S3_CUSTOM_DOMAIN = 'media.carolinewoolard.com'
-AWS_STATIC_CUSTOM_DOMAIN = 'static.carolinewoolard.com'
 STATIC_URL = 'https://static.carolinewoolard.com/'
 MEDIA_URL = 'https://media.carolinewoolard.com/'
 

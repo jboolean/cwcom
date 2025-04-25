@@ -1,4 +1,3 @@
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 from .base import *
 import os
 
@@ -29,17 +28,27 @@ CACHES = {
 
 CACHE_MIDDLEWARE_SECONDS = 7 * 24 * 60 * 60
 
-STATICFILES_STORAGE = 'base.storages.S3StaticStorage'
-AWS_STORAGE_BUCKET_NAME = 'cw-media-staging-01'
-AWS_STATIC_BUCKET_NAME = 'cw-static-staging-01'
-AWS_DEFAULT_ACL = 'public-read'
-AWS_QUERYSTRING_AUTH = False
-
+STORAGES = {
+    "default": {
+        "BACKEND": "storages.backends.s3boto3.S3Boto3Storage",
+        "OPTIONS": {
+            "bucket_name": "cw-media-staging-01",
+            "custom_domain": "media.staging.carolinewoolard.com",
+            "default_acl": "public-read",
+            "querystring_auth": False,
+        }
+    },
+    "staticfiles": {
+        "BACKEND": "base.storages.S3StaticStorage",
+        "OPTIONS": {
+            "bucket_name": "cw-static-staging-01",
+            "custom_domain": "static.staging.carolinewoolard.com",
+        }
+    },
+}
 
 SITE_URL = 'https://staging.carolinewoolard.com'
 
-AWS_S3_CUSTOM_DOMAIN = 'media.staging.carolinewoolard.com'
-AWS_STATIC_CUSTOM_DOMAIN = 'static.staging.carolinewoolard.com'
 STATIC_URL = 'https://static.staging.carolinewoolard.com/'
 MEDIA_URL = 'https://media.staging.carolinewoolard.com/'
 

@@ -33,7 +33,7 @@ STORAGES = {
         "BACKEND": "storages.backends.s3.S3Storage",
         "OPTIONS": {
             "bucket_name": "cw-media-staging-01",
-            "custom_domain": "media.staging.carolinewoolard.com",
+            "custom_domain": "media-staging.carolinewoolard.com",
             "default_acl": "public-read",
             "querystring_auth": False,
         }
@@ -42,14 +42,14 @@ STORAGES = {
         "BACKEND": "storages.backends.s3.S3Storage",
         "OPTIONS": {
             "bucket_name": "cw-static-staging-01",
-            "custom_domain": "static.staging.carolinewoolard.com",
+            "custom_domain": "static-staging.carolinewoolard.com",
         }
     },
 }
 
 SITE_URL = 'https://staging.carolinewoolard.com'
 
-STATIC_URL = 'https://static.staging.carolinewoolard.com/'
-MEDIA_URL = 'https://media.staging.carolinewoolard.com/'
+STATIC_URL = 'https://static-staging.carolinewoolard.com/'
+MEDIA_URL = 'https://media-staging.carolinewoolard.com/'
 
 STATIC_ROOT = '/tmp/staticfiles'

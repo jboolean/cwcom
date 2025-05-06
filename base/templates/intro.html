@@ -2,9 +2,17 @@
 
 <header id="header">
 	<!-- INTRO -->
-	<section class="section section--{{ content_blocks.first.slug }}" id="{{ content_blocks.first.slug }}">
+	<section class="section section--{{ content_blocks.0.slug }}" id="{{ content_blocks.0.slug }}">
 		<div class="section__content">
-			{{ content_blocks.first.content|safe }}
+			{{ content_blocks.0.content|safe }}
+		</div>
+	</section>
+	<section class="section section--hero-image" id="hero-image">
+		<img src="{% static 'base/images/LMandel_Pollinator_Headshot_010.jpg' %}" alt="Caroline Woolard">
+	</section>
+	<section class="section section--{{ content_blocks.1.slug }}" id="{{ content_blocks.1.slug }}">
+		<div class="section__content">
+			{{ content_blocks.1.content|safe }}
 		</div>
 	</section>
 </header>

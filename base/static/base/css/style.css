@@ -202,9 +202,13 @@ body {
 
 @media (min-width: 960px) {
   .section--intro .section__content,
+  .section--hero-image .section__content,
   .section--visit .section__content {
     max-width: 80rem; } }
 
+.hero-image {
+  width: 100%;
+}
 .section--past-events {
   margin-top: 5rem; }
 

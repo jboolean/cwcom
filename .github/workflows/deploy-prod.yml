@@ -28,3 +28,8 @@ jobs:
         run: npm run deploy:staging
       - name: Deploy production
         run: npm run deploy:prod
+      - name: Invalidate CloudFront cache
+        run: |
+          aws cloudfront create-invalidation \
+            --distribution-id EOO8XTEX3OZF \
+            --paths "/base/*"

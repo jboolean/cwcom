@@ -1,5 +1,5 @@
 {% for content_block in content_blocks %}
-	{% if not forloop.first %}
+	{% if content_block.slug != "intro" and content_block.slug != "heading" %}
 	<!-- {{ content_block.name|upper }} -->
 	<section class="section section--{{ content_block.slug }}" id="{{ content_block.slug }}">
 		<h2 class="section__header">{{ content_block.name|upper }}  <a href="#{{ content_block.slug }}"><i class="fa fa-chain fa-chain-big"></i></a></h2>

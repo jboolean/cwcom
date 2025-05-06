@@ -2,9 +2,31 @@
 
 <header id="header">
 	<!-- INTRO -->
-	<section class="section section--{{ content_blocks.first.slug }}" id="{{ content_blocks.first.slug }}">
+	<section class="section section--{{ content_blocks.0.slug }}" id="{{ content_blocks.0.slug }}">
 		<div class="section__content">
-			{{ content_blocks.first.content|safe }}
+			{{ content_blocks.0.content|safe }}
+		</div>
+	</section>
+	<section class="section section--hero-image" id="hero-image">
+		<div class="section__content">
+			<img 
+				class="hero-image"
+				src="{% static 'base/images/LMandel_Pollinator_Headshot_010.webp' %}" 
+				srcset="
+					{% static 'base/images/LMandel_Pollinator_Headshot_010-350.webp' %} 350w,
+					{% static 'base/images/LMandel_Pollinator_Headshot_010-700.webp' %} 700w,
+					{% static 'base/images/LMandel_Pollinator_Headshot_010-1920.webp' %} 1920w,
+					{% static 'base/images/LMandel_Pollinator_Headshot_010-2240.webp' %} 2240w,
+					{% static 'base/images/LMandel_Pollinator_Headshot_010.webp' %}
+				"
+				sizes="(min-width: 1140px) 720px, 100vw"
+				alt="Caroline Woolard"
+			>
+		</div>
+	</section>
+	<section class="section section--{{ content_blocks.1.slug }}" id="{{ content_blocks.1.slug }}">
+		<div class="section__content">
+			{{ content_blocks.1.content|safe }}
 		</div>
 	</section>
 </header>

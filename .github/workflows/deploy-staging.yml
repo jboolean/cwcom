@@ -23,3 +23,8 @@ jobs:
       - run: poetry install --sync
       - name: Deploy staging
         run: npm run deploy:staging
+      - name: Invalidate CloudFront cache
+        run: |
+          aws cloudfront create-invalidation \
+            --distribution-id EXA34HQT3K2S7 \
+            --paths "/base/*"

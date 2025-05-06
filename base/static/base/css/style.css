@@ -201,6 +201,7 @@ body {
   padding-bottom: 5rem; }
 
 @media (min-width: 960px) {
+  .section--heading .section__content,
   .section--intro .section__content,
   .section--hero-image .section__content,
   .section--visit .section__content {

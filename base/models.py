@@ -1,13 +1,35 @@
 from __future__ import unicode_literals
-from django.conf import settings
-from django.db.models import *
-from django.utils.html import format_html
-from tinymce.models import HTMLField
-from django.urls import reverse
 
-from django.db.models.signals import post_save, post_delete
+from urllib.parse import urlparse
+
+from django.conf import settings
 from django.core.cache import cache
+from django.db.models import *
+from django.db.models.signals import post_delete, post_save
 from django.dispatch import receiver
+from django.urls import reverse
+from django.utils.html import format_html
+from s3upload.fields import S3UploadField
+from tinymce.models import HTMLField
+
+
+class S3UploadFieldWithPath(S3UploadField):
+    """
+    Custom S3UploadField that returns the path portion instead of the full URL
+    for backwards compatibility with FileField behavior.
+    """
+    def __get__(self, instance, owner=None):
+        """Override to return path portion of URL for template compatibility."""
+        value = super().__get__(instance, owner)
+        if not value or instance is None:
+            return value
+        # If it's a full URL, extract the path portion
+        if isinstance(value, str) and (value.startswith('http://') or value.startswith('https://')):
+            parsed = urlparse(value)
+            # Return path without leading slash to match FileField behavior
+            return parsed.path.lstrip('/')
+        # Otherwise it's already a path (legacy data)
+        return value
 
 
 
@@ -123,7 +145,7 @@ class Text(Base):
     )
 
     description = HTMLField(blank=True, null=True)
-    pdf = FileField(upload_to='texts', blank=True, null=True)
+    pdf = S3UploadFieldWithPath(dest='text_pdf', blank=True, null=True)
     category = CharField(max_length=20, choices=CATEGORY_CHOICES, default=TEXT)
 
     @property

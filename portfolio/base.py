@@ -142,3 +142,48 @@ TINYMCE_DEFAULT_CONFIG = {
 }
 
 DEFAULT_AUTO_FIELD = "django.db.models.AutoField"
+
+# AWS S3 Upload Configuration
+# Helper function to extract AWS credentials from boto3's default credential chain
+# This works for both local dev (AWS CLI credentials) and Lambda (IAM role)
+def _get_aws_credentials():
+    """Extract AWS credentials from boto3's default credential chain."""
+    import os
+    try:
+        import boto3
+        session = boto3.Session()
+        credentials = session.get_credentials()
+        if credentials:
+            # Extract credentials from boto3 (works for both AWS CLI and IAM roles)
+            access_key = credentials.access_key
+            secret_key = credentials.secret_key
+            # Session token is required for temporary credentials (IAM roles in Lambda)
+            session_token = getattr(credentials, 'token', None) or os.environ.get('AWS_SESSION_TOKEN', '')
+            return access_key, secret_key, session_token
+    except Exception:
+        pass
+    # Fallback to environment variables
+    return (
+        os.environ.get('AWS_ACCESS_KEY_ID', ''),
+        os.environ.get('AWS_SECRET_ACCESS_KEY', ''),
+        os.environ.get('AWS_SESSION_TOKEN', '')
+    )
+
+# Extract credentials (will be overridden by environment-specific settings if needed)
+_aws_creds = _get_aws_credentials()
+AWS_ACCESS_KEY_ID = _aws_creds[0]
+AWS_SECRET_ACCESS_KEY = _aws_creds[1]
+AWS_SESSION_TOKEN = _aws_creds[2]
+
+AWS_STORAGE_BUCKET_NAME = ''
+S3UPLOAD_REGION = 'us-east-1'
+
+# S3 Upload Destinations
+S3UPLOAD_DESTINATIONS = {
+    'text_pdf': {
+        'key': 'texts',
+        'allowed_types': ['application/pdf'],
+        'allowed_extensions': ['.pdf'],
+        'acl': 'public-read',
+    }
+}

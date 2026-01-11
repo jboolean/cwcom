@@ -2,18 +2,18 @@
 
 [[package]]
 name = "asgiref"
-version = "3.8.1"
+version = "3.11.0"
 description = "ASGI specs, helper code, and adapters"
 optional = false
-python-versions = ">=3.8"
+python-versions = ">=3.9"
 groups = ["main"]
 files = [
-    {file = "asgiref-3.8.1-py3-none-any.whl", hash = "sha256:3e1e3ecc849832fe52ccf2cb6686b7a55f82bb1d6aee72a58826471390335e47"},
-    {file = "asgiref-3.8.1.tar.gz", hash = "sha256:c343bd80a0bec947a9860adb4c432ffa7db769836c64238fc34bdc3fec84d590"},
+    {file = "asgiref-3.11.0-py3-none-any.whl", hash = "sha256:1db9021efadb0d9512ce8ffaf72fcef601c7b73a8807a1bb2ef143dc6b14846d"},
+    {file = "asgiref-3.11.0.tar.gz", hash = "sha256:13acff32519542a1736223fb79a715acdebe24286d98e8b164a73085f40da2c4"},
 ]
 
 [package.extras]
-tests = ["mypy (>=0.800)", "pytest", "pytest-asyncio"]
+tests = ["mypy (>=1.14.0)", "pytest", "pytest-asyncio"]
 
 [[package]]
 name = "boto3"
@@ -57,24 +57,24 @@ crt = ["awscrt (==0.29.2)"]
 
 [[package]]
 name = "django"
-version = "5.2.9"
+version = "6.0.1"
 description = "A high-level Python web framework that encourages rapid development and clean, pragmatic design."
 optional = false
-python-versions = ">=3.10"
+python-versions = ">=3.12"
 groups = ["main"]
 files = [
-    {file = "django-5.2.9-py3-none-any.whl", hash = "sha256:3a4ea88a70370557ab1930b332fd2887a9f48654261cdffda663fef5976bb00a"},
-    {file = "django-5.2.9.tar.gz", hash = "sha256:16b5ccfc5e8c27e6c0561af551d2ea32852d7352c67d452ae3e76b4f6b2ca495"},
+    {file = "django-6.0.1-py3-none-any.whl", hash = "sha256:a92a4ff14f664a896f9849009cb8afaca7abe0d6fc53325f3d1895a15253433d"},
+    {file = "django-6.0.1.tar.gz", hash = "sha256:ed76a7af4da21551573b3d9dfc1f53e20dd2e6c7d70a3adc93eedb6338130a5f"},
 ]
 
 [package.dependencies]
-asgiref = ">=3.8.1"
-sqlparse = ">=0.3.1"
+asgiref = ">=3.9.1"
+sqlparse = ">=0.5.0"
 tzdata = {version = "*", markers = "sys_platform == \"win32\""}
 
 [package.extras]
-argon2 = ["argon2-cffi (>=19.1.0)"]
-bcrypt = ["bcrypt"]
+argon2 = ["argon2-cffi (>=23.1.0)"]
+bcrypt = ["bcrypt (>=4.1.1)"]
 
 [[package]]
 name = "django-clearcache"
@@ -93,19 +93,19 @@ django = ">=2.2"
 
 [[package]]
 name = "django-s3-upload"
-version = "1.1.1"
+version = "1.2.0"
 description = "Integrates direct client-side uploading to s3 with Django."
 optional = false
-python-versions = "<4.0,>=3.10"
+python-versions = "<4.0,>=3.12"
 groups = ["main"]
 files = [
-    {file = "django_s3_upload-1.1.1-py3-none-any.whl", hash = "sha256:b0a0cae25561e1642ffdd882461d8cd6ae90b6195234f99a0535ddb61a8a0f0e"},
-    {file = "django_s3_upload-1.1.1.tar.gz", hash = "sha256:f740227d912c354221307b922c0683cb09a5161c22ad567b739bb854c387ddb9"},
+    {file = "django_s3_upload-1.2.0-py3-none-any.whl", hash = "sha256:9fbf281ebca751ca2a45de891e634fe679d706ff65912e055de81a816256ac05"},
+    {file = "django_s3_upload-1.2.0.tar.gz", hash = "sha256:e7ce997158a92400e598537ddc198e96b11391ab180b3ed1775b4e07b19200e8"},
 ]
 
 [package.dependencies]
 boto3 = ">=1.14,<2.0"
-django = ">=4.2,<6.0"
+django = ">=5.2,<7.0"
 
 [[package]]
 name = "django-storages"
@@ -519,5 +519,5 @@ watchdog = ["watchdog (>=2.3)"]
 
 [metadata]
 lock-version = "2.1"
-python-versions = "~3.11"
-content-hash = "7ad8f105b24622bc6876b0f1b172d37f1fac7449cbaa78c19619a70f0dc181e1"
+python-versions = "^3.12"
+content-hash = "7e98c13b0972ce1e5c2fa86ce626da67efb47747ee679a165e24ecaa050b4e5c"

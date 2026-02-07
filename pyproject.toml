@@ -17,7 +17,7 @@ psycopg2-binary = "^2.9.5"
 django-storages = "^1.13.1"
 django-clearcache = "^1.2.1"
 boto3 = "^1.42.25"
-Werkzeug = "^2.2.2"
+Werkzeug = "^3.1.5"
 django-s3-upload = "^1.1.1"
 
 

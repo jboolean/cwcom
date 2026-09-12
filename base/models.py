@@ -64,7 +64,7 @@ class BaseImage(Model):
     class Meta:
         abstract = True
 
-    image = ImageField(upload_to='images', verbose_name='Image')
+    image = S3UploadFieldWithPath(dest='images', verbose_name='Image')
     order = PositiveSmallIntegerField(default=0)
     is_primary = BooleanField(default=False)
     created = DateTimeField(auto_now_add=True, editable=False)

@@ -178,6 +178,12 @@ AWS_SESSION_TOKEN = _aws_creds[2]
 AWS_STORAGE_BUCKET_NAME = ''
 S3UPLOAD_REGION = 'us-east-1'
 
+# Only staff (i.e. admin users) may request signed S3 upload credentials.
+# Without this, the /s3upload/ endpoint hands out valid presigned POST
+# credentials to anyone, logged in or not.
+def s3upload_staff_only(user):
+    return user.is_authenticated and user.is_staff
+
 # S3 Upload Destinations
 S3UPLOAD_DESTINATIONS = {
     'text_pdf': {
@@ -185,5 +191,13 @@ S3UPLOAD_DESTINATIONS = {
         'allowed_types': ['application/pdf'],
         'allowed_extensions': ['.pdf'],
         'acl': 'public-read',
-    }
+        'auth': s3upload_staff_only,
+    },
+    'images': {
+        'key': 'images',
+        'allowed_types': ['image/jpeg', 'image/png', 'image/gif', 'image/webp'],
+        'allowed_extensions': ['.jpg', '.jpeg', '.png', '.gif', '.webp'],
+        'acl': 'public-read',
+        'auth': s3upload_staff_only,
+    },
 }

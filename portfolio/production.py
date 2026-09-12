@@ -68,5 +68,13 @@ S3UPLOAD_DESTINATIONS = {
         'allowed_types': ['application/pdf'],
         'allowed_extensions': ['.pdf'],
         'bucket': 'cw-media-production',
-    }
+        'auth': s3upload_staff_only,
+    },
+    'images': {
+        'key': 'images',
+        'allowed_types': ['image/jpeg', 'image/png', 'image/gif', 'image/webp'],
+        'allowed_extensions': ['.jpg', '.jpeg', '.png', '.gif', '.webp'],
+        'bucket': 'cw-media-production',
+        'auth': s3upload_staff_only,
+    },
 }

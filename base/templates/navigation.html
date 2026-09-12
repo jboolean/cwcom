@@ -40,11 +40,9 @@
 		{% endif %}
 
 		{% for content_block in content_blocks %}
-		{% if not forloop.first %}
 		<li class="menu__item">
 			<a href="{{ site_url }}#{{ content_block.slug }}">{{ content_block.name }}</a>
 		</li>
-		{% endif %}
 		{% endfor %}
 	</ul>
 </nav>

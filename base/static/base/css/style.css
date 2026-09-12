@@ -114,9 +114,6 @@ body {
         font-family: helvetica;
         text-transform: uppercase; } }
 
-#header {
-  padding-top: 10rem; }
-
 .navigation__navicon {
   display: block;
   position: absolute;

@@ -7,8 +7,8 @@
 			{% if content_block.image %}
 			<img
 				class="content-block__image"
-				src="{{ MEDIA_URL }}{{ content_block.image }}?width=full"
-				srcset="{{ content_block.image|srcset }}"
+				src="{{ content_block.image|capped_src }}"
+				srcset="{{ content_block.image|srcset_capped }}"
 				sizes="(min-width: 1140px) 720px, 100vw"
 				alt="{{ content_block.image_alt }}"
 				loading="lazy"

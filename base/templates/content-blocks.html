@@ -1,7 +1,20 @@
+{% load image_tags %}
 {% for content_block in content_blocks %}
 	<!-- {{ content_block.name|upper }} -->
 	<section class="section section--{{ content_block.slug }}" id="{{ content_block.slug }}">
 		<h2 class="section__header">{{ content_block.name|upper }}  <a href="#{{ content_block.slug }}"><i class="fa fa-chain fa-chain-big"></i></a></h2>
-		<div class="section__content">{{ content_block.content|safe }}</div>
+		<div class="section__content">
+			{% if content_block.image %}
+			<img
+				class="content-block__image"
+				src="{{ MEDIA_URL }}{{ content_block.image }}?width=full"
+				srcset="{{ content_block.image|srcset }}"
+				sizes="(min-width: 1140px) 720px, 100vw"
+				alt="{{ content_block.image_alt }}"
+				loading="lazy"
+			>
+			{% endif %}
+			{{ content_block.content|safe }}
+		</div>
 	</section>
 {% endfor %}

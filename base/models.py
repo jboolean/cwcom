@@ -79,7 +79,7 @@ class ContentBlock(Base):
     class Meta:
         ordering = ['position', 'name']
 
-    content = HTMLField()
+    content = HTMLField(blank=True)
     position = PositiveSmallIntegerField(null=True)
     image = S3UploadFieldWithPath(dest='images', verbose_name='Image', blank=True, null=True)
     image_alt = CharField(max_length=255, blank=True, default='')

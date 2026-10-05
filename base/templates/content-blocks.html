@@ -9,7 +9,7 @@
 				class="content-block__image"
 				src="{{ content_block.image|capped_src }}"
 				srcset="{{ content_block.image|srcset_capped }}"
-				sizes="(min-width: 1140px) 720px, 100vw"
+				sizes="(min-width: 960px) 720px, (min-width: 768px) calc(100vw - 80px), calc(100vw - 40px)"
 				alt="{{ content_block.image_alt }}"
 				loading="lazy"
 			>

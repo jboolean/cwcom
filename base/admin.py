@@ -55,7 +55,8 @@ class TalkImageInline(admin.TabularInline):
 
 class ContentBlockAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('name',)}
-    readonly_fields = ('url',)
+    readonly_fields = ('url', 'image_tag')
+    fields = ('name', 'slug', 'position', 'content', 'image', 'image_tag', 'image_alt', 'url')
     list_display = ('name', 'position', 'url')
     list_editable = ('position',)
 

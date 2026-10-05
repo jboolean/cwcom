@@ -81,6 +81,14 @@ class ContentBlock(Base):
 
     content = HTMLField()
     position = PositiveSmallIntegerField(null=True)
+    image = S3UploadFieldWithPath(dest='images', verbose_name='Image', blank=True, null=True)
+    image_alt = CharField(max_length=255, blank=True, default='')
+
+    @property
+    def image_tag(self):
+        if not self.image:
+            return ''
+        return format_html('<img src="{}{}" height="100" />', settings.MEDIA_URL, self.image)
 
 
 class Project(BaseWork):

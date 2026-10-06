@@ -27,7 +27,9 @@ CACHES = {
     },
 }
 
-CACHE_MIDDLEWARE_SECONDS = 7 * 24 * 60 * 60
+# Also sent as the page's Cache-Control max-age, so this is how stale browsers
+# and the CDN can be. The server-side cache is cleared on every save anyway.
+CACHE_MIDDLEWARE_SECONDS = 60
 
 STORAGES = {
     "default": {

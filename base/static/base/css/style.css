@@ -199,6 +199,7 @@ body {
 
 @media (min-width: 960px) {
   .section--intro .section__content,
+  .section--photo .section__content,
   .section--visit .section__content {
     max-width: 80rem; } }
 
